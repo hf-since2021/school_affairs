@@ -1,0 +1,2 @@
+class YearTerm < ApplicationRecord
+end
