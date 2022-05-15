@@ -1,0 +1,2 @@
+class YearTermsController < ApplicationController
+end
