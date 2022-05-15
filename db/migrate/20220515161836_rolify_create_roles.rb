@@ -1,7 +1,7 @@
 class RolifyCreateRoles < ActiveRecord::Migration[6.0]
   def change
     create_table(:roles) do |t|
-      t.string :name
+      t.string :name, null: false
       t.references :resource, :polymorphic => true
 
       t.timestamps
@@ -10,6 +10,8 @@ class RolifyCreateRoles < ActiveRecord::Migration[6.0]
     create_table(:users_roles, :id => false) do |t|
       t.references :user
       t.references :role
+      # どの学期にログインするか
+      t.references :year_term, null: false, foreign_key: true
     end
     
     add_index(:roles, :name)
