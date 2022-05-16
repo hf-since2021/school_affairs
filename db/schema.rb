@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_15_161836) do
+ActiveRecord::Schema.define(version: 2022_05_16_055133) do
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.string "resource_type"
     t.bigint "resource_id"
     t.datetime "created_at", precision: 6, null: false
@@ -38,18 +38,18 @@ ActiveRecord::Schema.define(version: 2022_05_15_161836) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "year_term_id"
     t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["year_term_id"], name: "index_users_on_year_term_id"
   end
 
-  create_table "users_roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+  create_table "users_roles", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "role_id"
-    t.bigint "year_term_id"
     t.index ["role_id"], name: "index_users_roles_on_role_id"
     t.index ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id"
     t.index ["user_id"], name: "index_users_roles_on_user_id"
-    t.index ["year_term_id"], name: "index_users_roles_on_year_term_id"
   end
 
   create_table "year_terms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2022_05_15_161836) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "users_roles", "year_terms"
+  add_foreign_key "users", "year_terms"
   add_foreign_key "year_terms", "terms"
   add_foreign_key "year_terms", "years"
 end
