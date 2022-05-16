@@ -1,24 +1,56 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column              | Type       | Options                   | Description    |
+| ------------------- | ---------- | ------------------------- | -------------- |
+| name                | string     | null: false               | ログインID      |
+| year_term           | references | foreign_key: true         | ログイン年度学期  |
+| (4-columns)         | (various)  | (various)                 | (from devise)   |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many   :users_role
+- belongs_to :year_term
+- has_one    :year,  through: :year_term
+- has_one    :term,  through: :year_term
 
-* Configuration
+## roles テーブル
 
-* Database creation
+| Column              | Type       | Options                   | Description    |
+| ------------------- | ---------- | ------------------------- | -------------- |
+| name                | string     |                           | 権限名          |
+| (2-columns)         | (various)  | (various)                 | (from rolify)  |
 
-* Database initialization
+### Association
+- has_and_belongs_to_many :users, :join_table => :users_roles
 
-* How to run the test suite
+## users_roles テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column              | Type       | Options                   | Description    |
 
-* Deployment instructions
+### Association
+- 
 
-* ...
+## years テーブル
+
+| Column              | Type       | Options                   | Description    |
+
+### Association
+- 
+
+## terms テーブル
+
+| Column              | Type       | Options                   | Description    |
+
+### Association
+- 
+
+## year_terms テーブル
+
+| Column              | Type       | Options                   | Description    |
+
+### Association
+- 
+
+##  テーブル
