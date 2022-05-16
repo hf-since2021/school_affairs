@@ -1,0 +1,11 @@
+<%= form_with url: user_switch_path, class: 'form', method: "patch" do |f| %>
+  <select name="year_term_id" size="4">
+    <% @year_terms.each do |x| %>
+      <option value=<%=x.id%> <%if x.activity%>selected<%end%>><%="#{x.year.name} #{x.term.name}"%></option>
+    <% end %>
+  </select>
+  <%= f.submit "ログイン", autofocus: true %>
+<% end %>
+<%= link_to :back do %>
+  <button>戻る</button>
+<% end %>

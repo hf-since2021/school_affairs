@@ -1,0 +1,7 @@
+<% if user_signed_in? %>
+  <%= "#{current_user.year.name} #{current_user.term.name}" %>
+<% end %>
+<br>
+<%= link_to destroy_user_session_path, method: :delete do %>
+  <button type="button" class="btn btn-primary">ログアウト</button>
+<% end %>
