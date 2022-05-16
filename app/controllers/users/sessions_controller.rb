@@ -18,14 +18,14 @@ class Users::SessionsController < Devise::SessionsController
     set_flash_message!(:notice, :signed_in)
     sign_in(resource_name, resource)
     yield resource if block_given?
-    # if has_role?(:admin)
-    #   respond_with resource, location: year_term_path
-    # else
+    if current_user.has_role?(:admin)
+      respond_with resource, location: user_select_path
+    else
       # 一般権限は、有効化されている学年・学期に紐づけられてログインする。
       active_year = YearTerm.find_by(activity: TRUE)
       current_user.update(year_term_id: active_year.id)
       respond_with resource, location: after_sign_in_path_for(resource)
-    # end
+    end
   end
 
   # DELETE /resource/sign_out
