@@ -7,4 +7,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable#, :validatable
 
+  has_one  :users_role
+  has_one  :year_term,   through: :users_role
 end
