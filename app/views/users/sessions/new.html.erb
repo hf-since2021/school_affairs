@@ -1,27 +1,31 @@
-<h2>Log in</h2>
+<div class="text-center w-100 h-100">
+  <main class="form-signin w-100 m-auto">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%# emailではなくnameでログイン %>
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
-  </div>
+      <h1 class="h3 mb-3 fw-normal">ログイン</h1>
+      
+      <div class="form-floating">
+        <%= f.label :name, "ログインID"%><br />
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+      </div>
+      <div class="form-floating">
+        <%= f.label :password, "パスワード" %><br />
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <div class="form-check mb-3">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me, "状態を記憶する" %>
+      </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end %>
+      <%= f.submit "ログイン", class: 'w-100 btn btn-lg btn-primary' %>
+        <%# <button type="button" class="btn btn-primary">ログイン</button> %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+      <%#= link_to destroy_user_session_path, method: :delete do %>
+        <%# <button type="button" class="btn btn-primary">ログアウト</button> %>
+      <%# end %>
+    <% end %>
+  </main>
+</div>
 
-<%#= render "users/shared/links" %>
+<%# style="transition: opacity .1s ease-in-out,transform .1s ease-in-out; transition-property: opacity, transform;transition-duration: 0.1s, 0.1s;transition-timing-function: ease-in-out, ease-in-out;transition-delay: 0s, 0s;" %>
