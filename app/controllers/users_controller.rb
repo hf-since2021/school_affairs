@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  def index
+  end
+  
   def select
     # 年度・学期を渡す
     @year_terms = YearTerm.includes([:year,:term]).order("year_terms.code DESC")

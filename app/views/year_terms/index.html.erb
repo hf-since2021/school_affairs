@@ -1,7 +1,117 @@
-<% if user_signed_in? %>
-  <%= "#{current_user.year.name} #{current_user.term.name}" %>
-<% end %>
-<br>
-<%= link_to destroy_user_session_path, method: :delete do %>
-  <button type="button" class="btn btn-primary">ログアウト</button>
-<% end %>
+<nav class="navbar bg-light fixed-top">
+  <div class="container-fluid">
+    <button type="button" class="navbar-toggler" style="color:rgba(0,0,0,0.3);border: 1px solid rgba(0, 0, 0, 0.1);" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-expanded="false" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"><%= embedded_svg("navbar-toggler-icon.svg") %></span>
+    </button>
+    <a class="navbar-brand" href="#">オフキャンバス・ナビバー</a>
+    <%# <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel"> %>
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <%# <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">オフキャンバス</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="閉じる"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">ホーム</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">リンク</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              ドロップダウン
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+              <li><a class="dropdown-item" href="#">メニュー1</a></li>
+              <li><a class="dropdown-item" href="#">メニュー2</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">その他</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input type="search" class="form-control me-2" placeholder="検索" aria-label="検索">
+          <button class="btn btn-outline-success flex-shrink-0" type="submit">検索</button>
+        </form>
+      </div> %>
+      <div class="flex-shrink-0 p-3 bg-white">
+        <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom;" style="height: 55px;">
+    <span class="fs-5 fw-semibold">校務システム（仮）</span>
+  </a>
+  <ul class="list-unstyled ps-0">
+    <li class="mb-1">
+      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#task-collapse" aria-expanded="true">
+        タスク管理
+      </button>
+      <div class="collapse show" id="task-collapse"> <%# "show"をコントロールする必要がある %>
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <%#= link_to item_path(item) do %>
+          <li><%#= link_to "ダッシュボード", tasks_path, {class: "link-dark rounded"} %></li>
+          <li><a href="#" class="link-dark rounded">新規登録</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="mb-1">
+      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#gakuseki-collapse" aria-expanded="false">
+        学籍管理
+      </button>
+      <div class="collapse" id="gakuseki-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a href="#" class="link-dark rounded">新規登録</a></li>
+          <li><a href="#" class="link-dark rounded">一覧</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="mb-1">
+      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#lesson-collapse" aria-expanded="false">
+        授業管理
+      </button>
+      <div class="collapse" id="lesson-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a href="#" class="link-dark rounded">新規登録</a></li>
+          <li><a href="#" class="link-dark rounded">一覧</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="mb-1">
+      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#grades-collapse" aria-expanded="false">
+        成績管理
+      </button>
+      <div class="collapse" id="grades-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a href="#" class="link-dark rounded">成績入力</a></li>
+          <li><a href="#" class="link-dark rounded">帳票出力</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="border-top my-3"></li>
+    <li class="mb-1">
+      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#staff-collapse" aria-expanded="false">
+        職員管理
+      </button>
+      <div class="collapse" id="staff-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><a href="#" class="link-dark rounded">新規登録</a></li>
+          <li><a href="#" class="link-dark rounded">一覧</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="mb-1">
+      <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
+        アカウント管理
+      </button>
+      <div class="collapse" id="account-collapse">
+        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+          <li><%#= link_to "新規登録", new_user_registration_path, {class: "link-dark rounded"} %></li>
+          <li><%#= link_to "一覧", users_path, {class: "link-dark rounded"} %></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+    </div>
+    </div>
+  </div>
+</nav>

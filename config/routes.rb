@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     controllers: {
       sessions: 'users/sessions'
     }
-  resources :user, only: [:new]
-  get   'select', to: 'users#select', as: 'user_select'
-  patch 'switch', to: 'users#switch', as: 'user_switch'
+  resources :users, only: [:index]
+    get   'users/select', to: 'users#select', as: 'user_select'
+    patch 'users/switch', to: 'users#switch', as: 'user_switch'
 end
