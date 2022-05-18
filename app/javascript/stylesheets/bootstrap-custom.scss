@@ -1,8 +1,29 @@
-// 全体背景色
+// 背景色
 body {
   background-color: #f8f9fa; //gray-100
 }
-
+.bg-cyan-100 {
+  color: #000;
+  background-color: #cff4fc;
+}
+.bg-cyan-200 {
+  color: #000;
+  background-color: #9eeaf9;
+}
+.bg-gray-100 {
+  color: #000;
+  background-color: #f8f9fa;
+}
+.bg-gray-200 {
+  color: #000;
+  background-color: #e9ecef;
+}
+// ボタン
+.btn-cyan-700 {
+  color: #fff;
+  background-color: #087990;
+  border-color: #087990;
+}
 // ナビゲーションバー
 .offcanvas-start {
   width: 350px;
@@ -22,19 +43,16 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.5);
   padding: 0.25rem 0.5rem;
 }
-.bg-cyan-100 {
-  background-color: #cff4fc;
+.custom-navbar {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  height: 72px;
 }
-.bg-gray-200 {
-  background-color: #e9ecef;
+.custom-nav-border {
+  border-bottom: 1px solid #9eeaf9; // cyan-200(#9eeaf9) cyan-300(#6edff6)
 }
-.btn-cyan-700 {
-  color: #fff;
-  background-color: #087990;
-  border-color: #087990;
-}
-
-//サイドバー
+//サイドバー from サンプル
 main {
   display: flex;
   flex-wrap: nowrap;
@@ -97,6 +115,28 @@ main {
 .fw-semibold { font-weight: 600; }
 .lh-tight { line-height: 1.25; }
 
+// カスタムサイドバー
+.split {
+  display: table;
+  table-layout: fixed;
+  padding-top: 72px;
+}
+.split-sidebar {
+  display: table-cell;
+  position: relative;
+  overflow: scroll;
+}
+.split-main {
+  display: table-cell;
+  position: fixed;
+  overflow: scroll;
+}
+.fixed-w-250 {
+  width: 250px;
+}
+.fixed-w-300 {
+  width: 300px;
+}
 
 // ログイン画面
 .form-signin {
@@ -122,25 +162,4 @@ main {
 .custom-middle-cell {
   display: table-cell;
   vertical-align: middle;
-}
-
-// 背景色
-.blues .blue-100 {
-  color: #000;
-  background-color: #cfe2ff;
-}
-
-.blues .blue-200 {
-  color: #000;
-  background-color: #9ec5fe;
-}
-
-.blues .blue-300 {
-  color: #000;
-  background-color: #6ea8fe;
-}
-
-.blues .blue-400 {
-  color: #000;
-  background-color: #3d8bfd;
 }

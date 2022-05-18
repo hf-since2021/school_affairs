@@ -1,4 +1,4 @@
-<nav class="navbar bg-cyan-100 py-3">
+<nav class="navbar custom-navbar custom-nav-border bg-cyan-100"><%# py-3 %>
   <div class="container-fluid">
     <%# ヘッダー左 %>
     <div>
@@ -19,7 +19,7 @@
 
     <%# ドロワー %>
     <div class="offcanvas offcanvas-start bg-cyan-100" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header">
+      <div class="offcanvas-header custom-nav-border">
         <div class="navbar-brand">校務支援システム(仮)</div>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="閉じる"></button>
       </div>
@@ -156,11 +156,23 @@
             <% end %>
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">ユーザー管理</a></li>
+                <li><a href="#" class="link-dark rounded">年度マスタ</a></li>
               </ul>
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                 <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">教員管理</a></li>
+                <li><a href="#" class="link-dark rounded">学期マスタ</a></li>
+              </ul>
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
+                <li><a href="#" class="link-dark rounded">学期コントローラ</a></li>
+              </ul>
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
+                <li><a href="#" class="link-dark rounded">職名マスタ</a></li>
+              </ul>
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
+                <li><a href="#" class="link-dark rounded">分掌マスタ</a></li>
               </ul>
             </div>
           </li>
