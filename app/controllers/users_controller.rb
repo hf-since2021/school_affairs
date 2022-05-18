@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
+    # @logined_term = current_user.year_term.includes([:year,:term])
+    @logined_term = User.includes([:year,:term,:year_term]).find(current_user.id)
   end
   
   def select

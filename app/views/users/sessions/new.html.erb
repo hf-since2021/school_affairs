@@ -1,6 +1,6 @@
 <div class="custom-table vh-100 w-100">
   <div class="custom-middle-cell">
-    <div class="form-signin mx-auto">
+    <div class="form-signin mx-auto text-center">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
         <h1 class="h3 mb-3 fw-normal">ログイン</h1>
@@ -20,11 +20,6 @@
         </div>
 
         <%= f.submit "ログイン", class: 'w-100 btn btn-lg btn-primary' %>
-          <%# <button type="button" class="btn btn-primary">ログイン</button> %>
-
-        <%#= link_to destroy_user_session_path, method: :delete do %>
-          <%# <button type="button" class="btn btn-primary">ログアウト</button> %>
-        <%# end %>
       <% end %>
     </div>
   </div>

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "year_terms#index"
+  root to: "users#index"
   resources :year_terms, only: [:show]
   devise_for :users,
     only: [:sessions],
