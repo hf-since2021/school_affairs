@@ -1,19 +1,22 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_logined_term
+  before_action :set_users_list, only: [:index, :new]
 
   def index
-    @users = User.all
   end
   
   def new
-    @users = User.all
     @user = User.new
   end
 
   def create
-    # binding.pry
-    # "user"=>{"name"=>"akatsuka", "password"=>"fujio1234"}, "manager"=>"on"
+    user = User.create(user_params)
+    user.add_role "admin" if params[:admin] == "on"
+    user.add_role "manager" if params[:manager] == "on"
+    user.add_role "read_only" if params[:read_only] == "on"
+    redirect_to action: :new
+    # redirect_to action: :index
   end
 
   def select
@@ -32,5 +35,13 @@ class UsersController < ApplicationController
 
   def set_logined_term
     @logined_term = User.includes([:year,:term,:year_term]).find(current_user.id)
+  end
+
+  def set_users_list
+    @users = User.all.order("users.name ASC")
+  end
+
+  def user_params
+    params.require(:user).permit(:name, :password).merge(year_term_id: YearTerm.find_by(activity: TRUE).id)
   end
 end
