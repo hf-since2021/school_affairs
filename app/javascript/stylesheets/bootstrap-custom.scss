@@ -7,6 +7,16 @@ body {
 .offcanvas-start {
   width: 350px;
 }
+.navbar-toggler-icon {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  vertical-align: middle;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}
 .navbar-toggler {
   color: rgba(0,0,0,0.3);
   border: 1px solid rgba(0, 0, 0, 0.5);
@@ -25,37 +35,24 @@ body {
 }
 
 //サイドバー
-body {
-  min-height: 100vh;
-  min-height: -webkit-fill-available;
-}
-
-html {
-  height: -webkit-fill-available;
-}
-
 main {
   display: flex;
   flex-wrap: nowrap;
   height: 100vh;
-  height: -webkit-fill-available;
+  // height: -webkit-fill-available;
   max-height: 100vh;
   overflow-x: auto;
   overflow-y: hidden;
 }
-
 .bi {
   vertical-align: -.125em;
   pointer-events: none;
   fill: currentColor;
 }
-
 .dropdown-toggle { outline: 0; }
-
 .nav-flush .nav-link {
   border-radius: 0;
 }
-
 .btn-toggle {
   display: inline-flex;
   align-items: center;
@@ -70,7 +67,6 @@ main {
   color: rgba(0, 0, 0, .85);
   background-color: #d2f4ea;
 }
-
 .btn-toggle::before {
   width: 1.25em;
   line-height: 0;
@@ -78,14 +74,12 @@ main {
   transition: transform .35s ease;
   transform-origin: .5em 50%;
 }
-
 .btn-toggle[aria-expanded="true"] {
   color: rgba(0, 0, 0, .85);
 }
 .btn-toggle[aria-expanded="true"]::before {
   transform: rotate(90deg);
 }
-
 .btn-toggle-nav a {
   display: inline-flex;
   padding: .1875rem .5rem;
@@ -97,11 +91,9 @@ main {
 .btn-toggle-nav a:focus {
   background-color: #d2f4ea;
 }
-
 .scrollarea {
   overflow-y: auto;
 }
-
 .fw-semibold { font-weight: 600; }
 .lh-tight { line-height: 1.25; }
 
