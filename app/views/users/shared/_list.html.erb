@@ -1,0 +1,19 @@
+<div class="split-sidebar fixed-w-250 h-100 bg-white p-3">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>ログインID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> <%= link_to "新規作成", new_user_path, {class: ""} %> </td>
+      </tr>
+      <% users.each do |user| %>
+        <tr>
+          <td><%= user.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

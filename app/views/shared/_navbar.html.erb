@@ -1,4 +1,4 @@
-<nav class="navbar custom-navbar custom-nav-border bg-cyan-100"><%# py-3 %>
+<nav class="navbar custom-navbar custom-nav-border bg-cyan-100">
   <div class="container-fluid">
     <%# ヘッダー左 %>
     <div>
@@ -39,11 +39,11 @@
               </button>
               <div class="collapse" id="groupware-collapse"><%# このdiv開始タグはifを出た後につづく %>
             <% end %>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
                 <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
                 <li><a href="#" class="link-dark rounded">お知らせ</a></li>
               </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
                 <li><%#= link_to "プロジェクト管理", xxx_path, {class: "link-dark rounded"} %></li>
                 <li><a href="#" class="link-dark rounded">プロジェクト管理</a></li>
               </ul>
@@ -64,11 +64,11 @@
               </button>
               <div class="collapse" id="student-collapse"><%# このdiv開始タグはifを出た後につづく %>
             <% end %>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
                 <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
                 <li><a href="#" class="link-dark rounded">学籍情報管理</a></li>
               </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
                 <li><%#= link_to "プロジェクト管理", xxx_path, {class: "link-dark rounded"} %></li>
                 <li><a href="#" class="link-dark rounded">クラス編成管理</a></li>
               </ul>
@@ -87,11 +87,11 @@
               </button>
               <div class="collapse" id="lesson-collapse"><%# このdiv開始タグはifを出た後につづく %>
             <% end %>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
                 <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
                 <li><a href="#" class="link-dark rounded">授業管理</a></li>
               </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
                 <li><%#= link_to "プロジェクト管理", xxx_path, {class: "link-dark rounded"} %></li>
                 <li><a href="#" class="link-dark rounded">成績管理</a></li>
               </ul>
@@ -110,7 +110,7 @@
               </button>
               <div class="collapse" id="absence-collapse"><%# このdiv開始タグはifを出た後につづく %>
             <% end %>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
                 <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
                 <li><a href="#" class="link-dark rounded">出欠席管理</a></li>
               </ul>
@@ -131,11 +131,11 @@
               </button>
               <div class="collapse" id="teacher-collapse"><%# このdiv開始タグはifを出た後につづく %>
             <% end %>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">ユーザー管理</a></li>
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+                <li><%= link_to "ユーザー管理", users_path, {class: "link-dark rounded"} %></li>
+                <%# <li><a href="#" class="link-dark rounded">ユーザー管理</a></li> %>
               </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
                 <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
                 <li><a href="#" class="link-dark rounded">教員管理</a></li>
               </ul>
@@ -154,23 +154,23 @@
               </button>
               <div class="collapse" id="masterdata-collapse"><%# このdiv開始タグはifを出た後につづく %>
             <% end %>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
                 <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
                 <li><a href="#" class="link-dark rounded">年度マスタ</a></li>
               </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
                 <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
                 <li><a href="#" class="link-dark rounded">学期マスタ</a></li>
               </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
                 <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
                 <li><a href="#" class="link-dark rounded">学期コントローラ</a></li>
               </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
                 <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
                 <li><a href="#" class="link-dark rounded">職名マスタ</a></li>
               </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
                 <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
                 <li><a href="#" class="link-dark rounded">分掌マスタ</a></li>
               </ul>

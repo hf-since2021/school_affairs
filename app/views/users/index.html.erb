@@ -1,8 +1,8 @@
 <%= render "shared/navbar" %>
 <div class="split w-100 vh-100">
-  <div class="split-sidebar fixed-w-250 h-100 bg-white">
-  ★
-  </div>
-  <div class="split-main w-100 h-100 bg-gray-200 p-3">
+  <%= render 'users/shared/list', {users: @users} %>
+
+  <div class="split-main w-100-fixed-250 h-100 bg-gray-200 p-3">
+    ここに表示されます。
   </div>
 </div>
