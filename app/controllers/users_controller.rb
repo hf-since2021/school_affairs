@@ -56,7 +56,7 @@ class UsersController < ApplicationController
   def switch
     # ログインする年度・学期を変更する
     current_user.update(year_term_id: params[:year_term_id])
-    redirect_to root_url
+    redirect_to root_path
   end
 
   private

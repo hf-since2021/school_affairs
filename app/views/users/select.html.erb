@@ -1,7 +1,7 @@
 <div class="custom-table vh-100 w-100">
   <div class="custom-middle-cell">
     <div class="form-signin mx-auto text-center">
-      <%= form_with url: user_switch_path, class: 'form', method: "patch" do |f| %>
+      <%= form_with url: user_switch_path, class: 'form', method: "post" do |f| %>
         <select name="year_term_id" class="form-select form-select-lg mb-3" size="4">
           <% @year_terms.each do |x| %>
             <option value=<%=x.id%> <%if x.activity%>selected<%end%>><%="#{x.year.name} #{x.term.name}"%></option>

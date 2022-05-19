@@ -28,7 +28,7 @@
         <ul class="list-unstyled ps-2">
           <li class="mb-1">
             <%# コマンド一覧の展開・収納をコントローラで切り替え／data-bs-targetとidの対応をつけること %>
-            <% if controller_name=="users" %><%# 展開時 %>
+            <% if false %><%# 展開時 %>
               <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#groupware-collapse" aria-expanded=true>
                 グループウェア
               </button>
@@ -120,7 +120,7 @@
           <li class="border-top my-3"></li>
 
           <li class="mb-1">
-            <% if FALSE %><%# 展開時 %>
+            <% if controller_name=="users" %><%# 展開時 %>
               <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#teacher-collapse" aria-expanded=true>
                 教員管理
               </button>
