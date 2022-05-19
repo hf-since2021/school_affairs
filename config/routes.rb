@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "users#index"
+  root to: "informations#index"
 
   # ユーザー管理系
   resources :users, only: [:index, :new, :create, :edit, :update]
