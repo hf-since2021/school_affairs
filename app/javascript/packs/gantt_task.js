@@ -1,3 +1,5 @@
+import Gantt from "frappe-gantt"
+
 window.onload = function() {
   // タスクを用意
   var tasks = [
