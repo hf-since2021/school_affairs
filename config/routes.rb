@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root to: "informations#index"
 
+  # グループウェア系
+  resources :projects, only: [:index]
+
   # ユーザー管理系
   resources :users, only: [:index, :new, :create, :edit, :update]
     get  'users/select', to: 'users#select', as: 'user_select'

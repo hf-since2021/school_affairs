@@ -1,4 +1,4 @@
-class InformationsController < ApplicationController
+class ProjectsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_logined_term
 
