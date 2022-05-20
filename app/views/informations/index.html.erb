@@ -1,6 +1,9 @@
 <%= render "shared/navbar" %>
 
 <div class="split mx-3">
+  <% if flash[:alert] %>
+    <%#= content_tag(:div, flash[:alert], class: "alert alert-danger") %>
+  <% end %>
   <div style="display:table-cell;width:70vw;">
     <div class="row p-3"> 
       <div class="col-md-12 p-1">
