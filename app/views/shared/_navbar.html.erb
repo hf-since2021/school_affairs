@@ -28,7 +28,7 @@
         <ul class="list-unstyled ps-2">
           <li class="mb-1">
             <%# コマンド一覧の展開・収納をコントローラで切り替え／data-bs-targetとidの対応をつけること %>
-            <% if controller_name=="informations" %><%# 展開時 %>
+            <% if controller_name=="informations" || controller_name=="projects" %><%# 展開時 %>
               <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#groupware-collapse" aria-expanded=true>
                 グループウェア
               </button>
@@ -43,8 +43,8 @@
                 <li><%= link_to "TOP", root_path, {class: "link-dark rounded"} %></li>
               </ul>
               <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%#= link_to "プロジェクト管理", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">プロジェクト管理</a></li>
+                <li><%= link_to "プロジェクト管理", projects_path, {class: "link-dark rounded"} %></li>
+                <%# <li><a href="#" class="link-dark rounded">プロジェクト管理</a></li> %>
               </ul>
             </div>
           </li>
