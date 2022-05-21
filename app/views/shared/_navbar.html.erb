@@ -1,6 +1,7 @@
 <nav class="custom-navbar custom-nav-border bg-cyan-100 p-3">
   <%# ヘッダー左 %>
-  <div class="d-inline-block">
+  <%# <div class="d-inline-block"> %>
+  <div class="text-nowrap">
     <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-expanded="false" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -8,7 +9,8 @@
   </div>
 
   <%# ヘッダー右 %>
-  <div class="d-inline-block">
+  <%# <div class="d-inline-block"> %>
+  <div class="text-nowrap">
     <span><%= "#{@logined_term.year.name} #{@logined_term.term.name}" %></span>
     <span class="pe-2"><%= current_user.name %></span>
     <%= link_to destroy_user_session_path, method: :delete do %>
