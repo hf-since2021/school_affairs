@@ -1,0 +1,22 @@
+<div class="split-sidebar fixed-w-250 h-100 bg-white p-3">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>コード</th>
+        <th>教科</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>X00</td>
+        <td><%= link_to "新規作成", new_subject_area_path, {class: ""} %></td>
+      </tr>
+      <% subject_areas.each do |subject_area| %>
+        <tr>
+          <td><%= subject_area.code %></td>
+          <td><%= subject_area.name %><%#= link_to subject_area.name, edit_subject_area_path(subject_area) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

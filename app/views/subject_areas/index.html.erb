@@ -1,27 +1,6 @@
 <%= render "shared/navbar" %>
-
 <div class="split w-100 vh-100">
-
-  <div class="split-sidebar fixed-w-250 h-100 bg-white p-3">
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>教科</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>教科1</td>
-        </tr>
-        <tr>
-          <td>教科2</td>
-        </tr>
-        <tr>
-          <td>教科3</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+  <%= render 'subject_areas/shared/subject_area_list', {subject_areas: @subject_areas} %>
 
   <div class="split-main w-100-fixed-250 h-100 bg-gray-200 p-3">
     ここに表示されます。
