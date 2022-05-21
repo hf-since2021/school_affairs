@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   
   # マスタメンテ系
   resources :year_terms, only: [:show]
+  resources :subject_areas, only: [:index]
+  resources :subjects, only: [:index]
 end
