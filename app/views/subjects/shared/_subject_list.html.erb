@@ -3,20 +3,20 @@
     <%#= f.collection_select(:category_id, @subjects, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
   <%# end %>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>コード</th>
-      <th>科目</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>X000</td>
-      <td><%= link_to "新規作成", new_subject_path, {class: ""} %></td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>コード</th>
+        <th>科目</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>X000</td>
+        <td><%= link_to "新規作成", new_subject_path, {class: ""} %></td>
+      </tr>
+    </tbody>
+  </table>
 
   <% subject_areas.each do |subject_area| %>
   <table class="table table-striped">

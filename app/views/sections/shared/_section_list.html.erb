@@ -1,0 +1,22 @@
+<div class="split-sidebar fixed-w-250 h-100 bg-white p-3">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>コード</th>
+        <th>校務分掌</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>X00</td>
+        <td><%= link_to "新規作成", new_section_path, {class: ""} %></td>
+      </tr>
+      <% sections.each do |section| %>
+        <tr>
+          <td><%= section.code %></td>
+          <td><%= section.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

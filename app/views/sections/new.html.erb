@@ -1,0 +1,21 @@
+<%= render "shared/navbar" %>
+<div class="split w-100 vh-100">
+  <%= render 'sections/shared/section_list', {sections: @sections} %>
+
+  <div class="split-main w-100-fixed-250 h-100 bg-gray-200 p-3">
+    <%= form_with model: @section, class: "row gx-5 gy-3 m-3" do |f| %>
+      <div class="col-md-2 pe-3 my-3">
+        <%= f.label :code, "コード", class: "form-label text-nowrap" %>
+        <%= f.text_field :code, autofocus: true, autocomplete: "code", class: "form-control" %>
+      </div>
+      <div class="col-md-3 ps-3 my-3">
+        <%= f.label :name, "校務分掌名", class: "form-label" %>
+        <%= f.text_field :name, autocomplete: "name", class: "form-control" %>
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">登録</button>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -15,11 +15,13 @@ Rails.application.routes.draw do
     }
   
   # マスタメンテ系
-  resources :year_terms, only: [:show]
-  resources :subject_areas, only: [:index, :new, :create]
-  resources :subjects, only: [:index, :new, :create]
+  resources :year_terms,        only: [:show]
+  resources :subject_areas,     only: [:index, :new, :create]
+  resources :subjects,          only: [:index, :new, :create]
   # resources :subject_areas, only: [:index, :new, :create] do
   #   resources :subjects, param: :id, only: [:index]
   # end
-
+  resources :jobs,              only: [:index, :new, :create]
+  resources :sections,          only: [:index, :new, :create]
+  resources :responsibilities,  only: [:index, :new, :create]
 end

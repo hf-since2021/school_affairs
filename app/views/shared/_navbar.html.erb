@@ -175,12 +175,16 @@
             <%# <li><a href="#" class="link-dark rounded">科目マスタ</a></li> %>
           </ul>
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-            <li><a href="#" class="link-dark rounded">職名マスタ</a></li>
+            <li><%= link_to "職名マスタ", jobs_path, {class: "link-dark rounded"} %></li>
+            <%# <li><a href="#" class="link-dark rounded">職名マスタ</a></li> %>
           </ul>
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-            <li><a href="#" class="link-dark rounded">分掌マスタ</a></li>
+            <li><%= link_to "校務分掌マスタ", sections_path, {class: "link-dark rounded"} %></li>
+            <%# <li><a href="#" class="link-dark rounded">校務分掌マスタ</a></li> %>
+          </ul>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%= link_to "分掌役割マスタ", responsibilities_path, {class: "link-dark rounded"} %></li>
+            <%# <li><a href="#" class="link-dark rounded">分掌役割マスタ</a></li> %>
           </ul>
         </div>
       </li>
