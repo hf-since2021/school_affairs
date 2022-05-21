@@ -1,183 +1,181 @@
-<nav class="navbar custom-navbar custom-nav-border bg-cyan-100">
-  <div class="container-fluid">
-    <%# ヘッダー左 %>
-    <div>
-      <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-expanded="false" aria-controls="offcanvasNavbar">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <span class="navbar-brand px-2">校務支援システム(仮)</span><%# "navbar-brand"は本来リンク用 %>
-    </div>
+<nav class="custom-navbar custom-nav-border bg-cyan-100 p-3">
+  <%# ヘッダー左 %>
+  <div class="d-inline-block">
+    <button type="button" class="navbar-toggler" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-expanded="false" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <span class="navbar-brand px-2">校務支援システム(仮)</span><%# "navbar-brand"は本来リンク用 %>
+  </div>
 
-    <%# ヘッダー右 %>
-    <div>
-      <span><%= "#{@logined_term.year.name} #{@logined_term.term.name}" %></span>
-      <span class="pe-2"><%= current_user.name %></span>
-      <%= link_to destroy_user_session_path, method: :delete do %>
-        <button type="button" class="btn btn-primary">ログアウト</button><%# btn-cyan-700 %>
-      <% end %>
-    </div>
-
-    <%# ドロワー %>
-    <div class="offcanvas offcanvas-start bg-cyan-100" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-      <div class="offcanvas-header custom-nav-border">
-        <div class="navbar-brand">校務支援システム(仮)</div>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="閉じる"></button>
-      </div>
-      
-      <div class="offcanvas-body bg-white px-1">
-        <ul class="list-unstyled ps-2">
-          <li class="mb-1">
-            <%# コマンド一覧の展開・収納をコントローラで切り替え／data-bs-targetとidの対応をつけること %>
-            <% if controller_name=="informations" || controller_name=="projects" %><%# 展開時 %>
-              <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#groupware-collapse" aria-expanded=true>
-                グループウェア
-              </button>
-              <div class="collapse show" id="groupware-collapse"><%# このdiv開始タグはifを出た後につづく %>
-            <% else %><%# 収納時 %>
-              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#groupware-collapse" aria-expanded=false>
-                グループウェア
-              </button>
-              <div class="collapse" id="groupware-collapse"><%# このdiv開始タグはifを出た後につづく %>
-            <% end %>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%= link_to "TOP", root_path, {class: "link-dark rounded"} %></li>
-              </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%= link_to "プロジェクト管理", projects_path, {class: "link-dark rounded"} %></li>
-                <%# <li><a href="#" class="link-dark rounded">プロジェクト管理</a></li> %>
-              </ul>
-            </div>
-          </li>
-
-          <li class="border-top my-3"></li>
-
-          <li class="mb-1">
-            <% if FALSE %><%# 展開時 %>
-              <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#student-collapse" aria-expanded=true>
-                生徒管理
-              </button>
-              <div class="collapse show" id="student-collapse"><%# このdiv開始タグはifを出た後につづく %>
-            <% else %><%# 収納時 %>
-              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#student-collapse" aria-expanded=false>
-                生徒管理
-              </button>
-              <div class="collapse" id="student-collapse"><%# このdiv開始タグはifを出た後につづく %>
-            <% end %>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">学籍情報管理</a></li>
-              </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%#= link_to "プロジェクト管理", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">クラス編成管理</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="mb-1">
-            <% if FALSE %><%# 展開時 %>
-              <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#lesson-collapse" aria-expanded=true>
-                授業管理
-              </button>
-              <div class="collapse show" id="lesson-collapse"><%# このdiv開始タグはifを出た後につづく %>
-            <% else %><%# 収納時 %>
-              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#lesson-collapse" aria-expanded=false>
-                授業管理
-              </button>
-              <div class="collapse" id="lesson-collapse"><%# このdiv開始タグはifを出た後につづく %>
-            <% end %>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">授業管理</a></li>
-              </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%#= link_to "プロジェクト管理", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">成績管理</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="mb-1">
-            <% if FALSE %><%# 展開時 %>
-              <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#absence-collapse" aria-expanded=true>
-                出欠席管理
-              </button>
-              <div class="collapse show" id="absence-collapse"><%# このdiv開始タグはifを出た後につづく %>
-            <% else %><%# 収納時 %>
-              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#absence-collapse" aria-expanded=false>
-                出欠席管理
-              </button>
-              <div class="collapse" id="absence-collapse"><%# このdiv開始タグはifを出た後につづく %>
-            <% end %>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">出欠席管理</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="border-top my-3"></li>
-
-          <li class="mb-1">
-            <% if controller_name=="users" %><%# 展開時 %>
-              <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#teacher-collapse" aria-expanded=true>
-                教員管理
-              </button>
-              <div class="collapse show" id="teacher-collapse"><%# このdiv開始タグはifを出た後につづく %>
-            <% else %><%# 収納時 %>
-              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#teacher-collapse" aria-expanded=false>
-                教員管理
-              </button>
-              <div class="collapse" id="teacher-collapse"><%# このdiv開始タグはifを出た後につづく %>
-            <% end %>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%= link_to "ユーザー管理", users_path, {class: "link-dark rounded"} %></li>
-                <%# <li><a href="#" class="link-dark rounded">ユーザー管理</a></li> %>
-              </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">教員管理</a></li>
-              </ul>
-            </div>
-          </li>
-
-          <li class="mb-1">
-            <% if FALSE %><%# 展開時 %>
-              <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#masterdata-collapse" aria-expanded=true>
-                マスタメンテ
-              </button>
-              <div class="collapse show" id="masterdata-collapse"><%# このdiv開始タグはifを出た後につづく %>
-            <% else %><%# 収納時 %>
-              <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#masterdata-collapse" aria-expanded=false>
-                マスタメンテ
-              </button>
-              <div class="collapse" id="masterdata-collapse"><%# このdiv開始タグはifを出た後につづく %>
-            <% end %>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">年度マスタ</a></li>
-              </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">学期マスタ</a></li>
-              </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">学期コントローラ</a></li>
-              </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">職名マスタ</a></li>
-              </ul>
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-                <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-                <li><a href="#" class="link-dark rounded">分掌マスタ</a></li>
-              </ul>
-            </div>
-          </li>
-
-        </ul>
-      </div>
-    </div>
+  <%# ヘッダー右 %>
+  <div class="d-inline-block">
+    <span><%= "#{@logined_term.year.name} #{@logined_term.term.name}" %></span>
+    <span class="pe-2"><%= current_user.name %></span>
+    <%= link_to destroy_user_session_path, method: :delete do %>
+      <button type="button" class="btn btn-primary">ログアウト</button><%# btn-cyan-700 %>
+    <% end %>
   </div>
 </nav>
+
+<%# ドロワー %>
+<div class="offcanvas offcanvas-start bg-cyan-100" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+  <div class="offcanvas-header custom-nav-border">
+    <div class="navbar-brand">校務支援システム(仮)</div>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="閉じる"></button>
+  </div>
+  
+  <div class="offcanvas-body bg-white px-1">
+    <ul class="list-unstyled ps-2">
+      <li class="mb-1">
+        <%# コマンド一覧の展開・収納をコントローラで切り替え／data-bs-targetとidの対応をつけること %>
+        <% if controller_name=="informations" || controller_name=="projects" %><%# 展開時 %>
+          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#groupware-collapse" aria-expanded=true>
+            グループウェア
+          </button>
+          <div class="collapse show" id="groupware-collapse"><%# このdiv開始タグはifを出た後につづく %>
+        <% else %><%# 収納時 %>
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#groupware-collapse" aria-expanded=false>
+            グループウェア
+          </button>
+          <div class="collapse" id="groupware-collapse"><%# このdiv開始タグはifを出た後につづく %>
+        <% end %>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%= link_to "TOP", root_path, {class: "link-dark rounded"} %></li>
+          </ul>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%= link_to "プロジェクト管理", projects_path, {class: "link-dark rounded"} %></li>
+            <%# <li><a href="#" class="link-dark rounded">プロジェクト管理</a></li> %>
+          </ul>
+        </div>
+      </li>
+
+      <li class="border-top my-3"></li>
+
+      <li class="mb-1">
+        <% if FALSE %><%# 展開時 %>
+          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#student-collapse" aria-expanded=true>
+            生徒管理
+          </button>
+          <div class="collapse show" id="student-collapse"><%# このdiv開始タグはifを出た後につづく %>
+        <% else %><%# 収納時 %>
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#student-collapse" aria-expanded=false>
+            生徒管理
+          </button>
+          <div class="collapse" id="student-collapse"><%# このdiv開始タグはifを出た後につづく %>
+        <% end %>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
+            <li><a href="#" class="link-dark rounded">学籍情報管理</a></li>
+          </ul>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%#= link_to "プロジェクト管理", xxx_path, {class: "link-dark rounded"} %></li>
+            <li><a href="#" class="link-dark rounded">クラス編成管理</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="mb-1">
+        <% if FALSE %><%# 展開時 %>
+          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#lesson-collapse" aria-expanded=true>
+            授業管理
+          </button>
+          <div class="collapse show" id="lesson-collapse"><%# このdiv開始タグはifを出た後につづく %>
+        <% else %><%# 収納時 %>
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#lesson-collapse" aria-expanded=false>
+            授業管理
+          </button>
+          <div class="collapse" id="lesson-collapse"><%# このdiv開始タグはifを出た後につづく %>
+        <% end %>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
+            <li><a href="#" class="link-dark rounded">授業管理</a></li>
+          </ul>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%#= link_to "プロジェクト管理", xxx_path, {class: "link-dark rounded"} %></li>
+            <li><a href="#" class="link-dark rounded">成績管理</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="mb-1">
+        <% if FALSE %><%# 展開時 %>
+          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#absence-collapse" aria-expanded=true>
+            出欠席管理
+          </button>
+          <div class="collapse show" id="absence-collapse"><%# このdiv開始タグはifを出た後につづく %>
+        <% else %><%# 収納時 %>
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#absence-collapse" aria-expanded=false>
+            出欠席管理
+          </button>
+          <div class="collapse" id="absence-collapse"><%# このdiv開始タグはifを出た後につづく %>
+        <% end %>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
+            <li><a href="#" class="link-dark rounded">出欠席管理</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="border-top my-3"></li>
+
+      <li class="mb-1">
+        <% if controller_name=="users" %><%# 展開時 %>
+          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#teacher-collapse" aria-expanded=true>
+            教員管理
+          </button>
+          <div class="collapse show" id="teacher-collapse"><%# このdiv開始タグはifを出た後につづく %>
+        <% else %><%# 収納時 %>
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#teacher-collapse" aria-expanded=false>
+            教員管理
+          </button>
+          <div class="collapse" id="teacher-collapse"><%# このdiv開始タグはifを出た後につづく %>
+        <% end %>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%= link_to "ユーザー管理", users_path, {class: "link-dark rounded"} %></li>
+            <%# <li><a href="#" class="link-dark rounded">ユーザー管理</a></li> %>
+          </ul>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
+            <li><a href="#" class="link-dark rounded">教員管理</a></li>
+          </ul>
+        </div>
+      </li>
+
+      <li class="mb-1">
+        <% if FALSE %><%# 展開時 %>
+          <button class="btn btn-toggle align-items-center rounded" data-bs-toggle="collapse" data-bs-target="#masterdata-collapse" aria-expanded=true>
+            マスタメンテ
+          </button>
+          <div class="collapse show" id="masterdata-collapse"><%# このdiv開始タグはifを出た後につづく %>
+        <% else %><%# 収納時 %>
+          <button class="btn btn-toggle align-items-center rounded collapsed" data-bs-toggle="collapse" data-bs-target="#masterdata-collapse" aria-expanded=false>
+            マスタメンテ
+          </button>
+          <div class="collapse" id="masterdata-collapse"><%# このdiv開始タグはifを出た後につづく %>
+        <% end %>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
+            <li><a href="#" class="link-dark rounded">年度マスタ</a></li>
+          </ul>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
+            <li><a href="#" class="link-dark rounded">学期マスタ</a></li>
+          </ul>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
+            <li><a href="#" class="link-dark rounded">学期コントローラ</a></li>
+          </ul>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
+            <li><a href="#" class="link-dark rounded">職名マスタ</a></li>
+          </ul>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
+            <li><a href="#" class="link-dark rounded">分掌マスタ</a></li>
+          </ul>
+        </div>
+      </li>
+
+    </ul>
+  </div>
+</div>
