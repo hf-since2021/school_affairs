@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_21_074347) do
+ActiveRecord::Schema.define(version: 2022_05_21_080313) do
 
   create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name", null: false
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2022_05_21_074347) do
     t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "section_id"
+    t.index ["section_id"], name: "index_responsibilities_on_section_id"
   end
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -51,8 +53,10 @@ ActiveRecord::Schema.define(version: 2022_05_21_074347) do
   create_table "subjects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "code", null: false
     t.string "name", null: false
+    t.bigint "subject_area_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["subject_area_id"], name: "index_subjects_on_subject_area_id"
   end
 
   create_table "terms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -102,6 +106,8 @@ ActiveRecord::Schema.define(version: 2022_05_21_074347) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "responsibilities", "sections"
+  add_foreign_key "subjects", "subject_areas"
   add_foreign_key "users", "year_terms"
   add_foreign_key "year_terms", "terms"
   add_foreign_key "year_terms", "years"
