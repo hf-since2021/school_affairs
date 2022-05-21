@@ -1,74 +1,13 @@
 <%= render "shared/navbar" %>
 
-<div class="split mx-3">
+<%# <div class="split mx-3"> %>
+<div class="row flex-row-reverse mx-3" style="padding-top: 72px;">
   <% if flash[:alert] %>
     <%#= content_tag(:div, flash[:alert], class: "alert alert-danger") %>
   <% end %>
-  <div style="display:table-cell;width:70vw;">
-    <div class="row p-3"> 
-      <div class="col-md-12 p-1">
-        【行事予定】
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">5月16日(月)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">5月17日(火)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">5月18日(水)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">5月19日(木)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">5月20日(金)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-1 p-1">
-        <div class="calendar-cel border">5月21日(土)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-1 p-1">
-        <div class="calendar-cel border">5月22日(日)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">5月23日(月)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">5月24日(火)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">5月26日(水)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">5月27日(木)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">5月28日(金)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-1 p-1">
-        <div class="calendar-cel border">5月29日(土)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-1 p-1">
-        <div class="calendar-cel border">5月30日(日)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-    </div>
-  </div>
-  <div style="display:table-cell;width:30vw;">
+  
+  <%# <div style="display:table-cell;width:30vw;"> %>
+  <div class="col-lg-3">
     <div class="p-3">
       【カレンダー】
       <table class="design09 my-2">
@@ -142,6 +81,73 @@
       </table>
     </div>
   </div>
+
+  <%# <div style="display:table-cell;width:70vw;"> %>
+  <div class="col-lg-9">
+    <div class="row p-3"> 
+      <div class="col-md-12 p-1">
+        【行事予定】
+      </div>
+      <div class="col-md-2 p-1">
+        <div class="calendar-cel border">5月16日(月)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+      <div class="col-md-2 p-1">
+        <div class="calendar-cel border">5月17日(火)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+      <div class="col-md-2 p-1">
+        <div class="calendar-cel border">5月18日(水)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+      <div class="col-md-2 p-1">
+        <div class="calendar-cel border">5月19日(木)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+      <div class="col-md-2 p-1">
+        <div class="calendar-cel border">5月20日(金)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+      <div class="col-md-1 p-1">
+        <div class="calendar-cel border">5月21日(土)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+      <div class="col-md-1 p-1">
+        <div class="calendar-cel border">5月22日(日)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+
+      <div class="col-md-2 p-1">
+        <div class="calendar-cel border">5月23日(月)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+      <div class="col-md-2 p-1">
+        <div class="calendar-cel border">5月24日(火)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+      <div class="col-md-2 p-1">
+        <div class="calendar-cel border">5月26日(水)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+      <div class="col-md-2 p-1">
+        <div class="calendar-cel border">5月27日(木)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+      <div class="col-md-2 p-1">
+        <div class="calendar-cel border">5月28日(金)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+      <div class="col-md-1 p-1">
+        <div class="calendar-cel border">5月29日(土)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+      <div class="col-md-1 p-1">
+        <div class="calendar-cel border">5月30日(日)</div>
+        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
+      </div>
+    </div>
+  </div>
+
 </div>
 <div class="mx-3 p-2 w-75">
   【お知らせ】

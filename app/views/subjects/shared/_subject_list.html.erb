@@ -1,0 +1,40 @@
+<div class="split-sidebar fixed-w-250 h-100 bg-white p-3">
+  <%#= form_with url: subject_area_subjects_path(:id) do |f| %><%# class: "row g-3 m-3" %>
+    <%#= f.collection_select(:category_id, @subjects, :id, :name, {}, {class:"select-box", id:"item-category"}) %>
+  <%# end %>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>コード</th>
+      <th>科目</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>X000</td>
+      <td><%= link_to "新規作成", new_subject_path, {class: ""} %></td>
+    </tr>
+  </tbody>
+</table>
+
+  <% subject_areas.each do |subject_area| %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= subject_area.code %></th>
+        <th><%= subject_area.name %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% subject_area.subjects.each do |subject| %>
+      <tr>
+        <td><%= subject.code %></td>
+        <td><%= subject.name %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+
+</div>
