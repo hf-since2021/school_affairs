@@ -1,18 +1,18 @@
-class JobsController < ApplicationController
+class YearsController < ApplicationController
   # before_action :authenticate_user! #(-> application_controller)
   before_action :set_logined_term
 
   def index
-    @jobs = Job.all.order("jobs.code ASC")
+    @years = Year.all.order("years.code ASC")
   end
 
   def new
-    @jobs = Job.all.order("jobs.code ASC")
-    @job = Job.new
+    @years = Year.all.order("years.code ASC")
+    @year = Year.new
   end
 
   def create
-    Job.create(job_params)
+    Year.create(year_params)
     redirect_to action: :index
   end
 
@@ -22,7 +22,7 @@ class JobsController < ApplicationController
     @logined_term = User.includes([:year,:term,:year_term]).find(current_user.id)
   end
 
-  def job_params
-    params.require(:job).permit(:code, :name)
+  def year_params
+    params.require(:year).permit(:code, :name)
   end
 end

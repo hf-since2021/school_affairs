@@ -1,18 +1,18 @@
-class JobsController < ApplicationController
+class TermsController < ApplicationController
   # before_action :authenticate_user! #(-> application_controller)
   before_action :set_logined_term
 
   def index
-    @jobs = Job.all.order("jobs.code ASC")
+    @terms = Term.all.order("terms.code ASC")
   end
 
   def new
-    @jobs = Job.all.order("jobs.code ASC")
-    @job = Job.new
+    @terms = Term.all.order("terms.code ASC")
+    @term = Term.new
   end
 
   def create
-    Job.create(job_params)
+    Term.create(term_params)
     redirect_to action: :index
   end
 
@@ -22,7 +22,7 @@ class JobsController < ApplicationController
     @logined_term = User.includes([:year,:term,:year_term]).find(current_user.id)
   end
 
-  def job_params
-    params.require(:job).permit(:code, :name)
+  def term_params
+    params.require(:term).permit(:code, :name)
   end
 end

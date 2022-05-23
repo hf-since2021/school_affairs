@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user! #(-> application_controller)
   before_action :set_logined_term
   # before_action :set_user, only: [:edit]
   before_action :set_users_list, only: [:index, :new, :edit]

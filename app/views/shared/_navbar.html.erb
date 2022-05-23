@@ -154,16 +154,16 @@
           <div class="collapse" id="masterdata-collapse"><%# このdiv開始タグはifを出た後につづく %>
         <% end %>
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-            <li><a href="#" class="link-dark rounded">年度マスタ</a></li>
+            <li><%= link_to "年度マスタ", years_path, {class: "link-dark rounded"} %></li>
+            <%# <li><a href="#" class="link-dark rounded">年度マスタ</a></li> %>
           </ul>
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-            <li><a href="#" class="link-dark rounded">学期マスタ</a></li>
+            <li><%= link_to "学期マスタ", terms_path, {class: "link-dark rounded"} %></li>
+            <%# <li><a href="#" class="link-dark rounded">学期マスタ</a></li> %>
           </ul>
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-            <li><a href="#" class="link-dark rounded">学期コントローラ</a></li>
+            <li><%= link_to "学期コントローラ", year_terms_path, {class: "link-dark rounded"} %></li>
+            <%# <li><a href="#" class="link-dark rounded">学期コントローラ</a></li> %>
           </ul>
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
             <li><%= link_to "教科マスタ", subject_areas_path, {class: "link-dark rounded"} %></li>

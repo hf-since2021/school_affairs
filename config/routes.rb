@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     }
   
   # マスタメンテ系
-  resources :year_terms,        only: [:show]
+  resources :years,             only: [:index, :new, :create]
+  resources :terms,             only: [:index, :new, :create]
+  resources :year_terms,        only: [:index, :new, :create]
   resources :subject_areas,     only: [:index, :new, :create]
   resources :subjects,          only: [:index, :new, :create]
   # resources :subject_areas, only: [:index, :new, :create] do

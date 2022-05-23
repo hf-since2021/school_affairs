@@ -1,0 +1,21 @@
+<%= render "shared/navbar" %>
+<div class="split w-100 vh-100">
+  <%= render 'year_terms/shared/year_term_list', {year_terms: @year_terms} %>
+
+  <div class="split-main w-100-fixed-250 h-100 bg-gray-200 p-3">
+    <%= form_with model: @year_term, class: "row gx-5 gy-3 m-3" do |f| %>
+      <div class="col-md-2 pe-3 my-3">
+        <%= f.label :year_id, "年度", class: "form-label text-nowrap" %>
+        <%= f.collection_select :year_id, @years, :id, :name, {prompt: "（年度）"}, {autofocus: true, class: "form-control"} %>
+      </div>
+      <div class="col-md-2 pe-3 my-3">
+        <%= f.label :term_id, "学期", class: "form-label text-nowrap" %>
+        <%= f.collection_select :term_id, @terms, :id, :name, {prompt: "（学期）"}, {autofocus: true, class: "form-control"} %>
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">登録</button>
+      </div>
+    <% end %>
+  </div>
+</div>

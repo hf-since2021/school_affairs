@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
+  # Basic認証
   before_action :basic_auth
+  # ログイン状態検証
+  before_action :authenticate_user!, unless: :devise_controller?
   # 要・管理者権限の操作orアクセスをチェック
   before_action :check_admin_authorization
   # 権限のない操作をrootへリダイレクト

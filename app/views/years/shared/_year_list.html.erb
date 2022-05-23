@@ -1,0 +1,22 @@
+<div class="split-sidebar fixed-w-250 h-100 bg-white p-3">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>コード</th>
+        <th>年度</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>X00</td>
+        <td><%= link_to "新規作成", new_year_path, {class: ""} %></td>
+      </tr>
+      <% years.each do |year| %>
+        <tr>
+          <td><%= year.code %></td>
+          <td><%= year.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

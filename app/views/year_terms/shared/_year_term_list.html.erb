@@ -1,0 +1,22 @@
+<div class="split-sidebar fixed-w-250 h-100 bg-white p-3">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>年度</th>
+        <th>学期</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= link_to "新規作成", new_year_term_path, {class: ""} %></td>
+        <td></td>
+      </tr>
+      <% year_terms.each do |year_term| %>
+        <tr>
+          <td><%= year_term.year.name %></td>
+          <td><%= year_term.term.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

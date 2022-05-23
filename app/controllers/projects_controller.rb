@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user! #(-> application_controller)
   before_action :set_logined_term
 
   def index

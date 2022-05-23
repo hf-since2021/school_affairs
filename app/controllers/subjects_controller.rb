@@ -1,5 +1,5 @@
 class SubjectsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user! #(-> application_controller)
   before_action :set_logined_term
 
   def index
@@ -8,11 +8,11 @@ class SubjectsController < ApplicationController
     # else
     #   @subjects = SubjectArea.includes(:subject).find(params[:subject_area_id])
     # end
-    @subject_areas = SubjectArea.includes(:subjects).all
+    @subject_areas = SubjectArea.includes(:subjects) #.all
   end
 
   def new
-    @subject_areas = SubjectArea.includes(:subjects).all
+    @subject_areas = SubjectArea.includes(:subjects) #.all
     @subject = Subject.new
   end
 

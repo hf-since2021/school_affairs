@@ -1,13 +1,13 @@
 class SubjectAreasController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user! #(-> application_controller)
   before_action :set_logined_term
 
   def index
-    @subject_areas = SubjectArea.all
+    @subject_areas = SubjectArea.all.order("subject_areas.code ASC")
   end
 
   def new
-    @subject_areas = SubjectArea.all
+    @subject_areas = SubjectArea.all.order("subject_areas.code ASC")
     @subject_area = SubjectArea.new
   end
 
