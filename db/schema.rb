@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_21_144806) do
+ActiveRecord::Schema.define(version: 2022_05_24_132327) do
+
+  create_table "annual_teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.bigint "teacher_id", null: false
+    t.bigint "year_id", null: false
+    t.bigint "job_id"
+    t.bigint "section_id"
+    t.bigint "responsibility_id"
+    t.string "school_grade"
+    t.string "klass"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["job_id"], name: "index_annual_teachers_on_job_id"
+    t.index ["responsibility_id"], name: "index_annual_teachers_on_responsibility_id"
+    t.index ["section_id"], name: "index_annual_teachers_on_section_id"
+    t.index ["teacher_id"], name: "index_annual_teachers_on_teacher_id"
+    t.index ["year_id"], name: "index_annual_teachers_on_year_id"
+  end
 
   create_table "jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "name", null: false
@@ -62,6 +79,18 @@ ActiveRecord::Schema.define(version: 2022_05_21_144806) do
     t.index ["subject_area_id"], name: "index_subjects_on_subject_area_id"
   end
 
+  create_table "teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_reading", null: false
+    t.string "first_name_reading", null: false
+    t.bigint "subject_area_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subject_area_id"], name: "index_teachers_on_subject_area_id"
+  end
+
   create_table "terms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "code", null: false
     t.string "name", null: false
@@ -109,8 +138,14 @@ ActiveRecord::Schema.define(version: 2022_05_21_144806) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "annual_teachers", "jobs"
+  add_foreign_key "annual_teachers", "responsibilities"
+  add_foreign_key "annual_teachers", "sections"
+  add_foreign_key "annual_teachers", "teachers"
+  add_foreign_key "annual_teachers", "years"
   add_foreign_key "responsibilities", "sections"
   add_foreign_key "subjects", "subject_areas"
+  add_foreign_key "teachers", "subject_areas"
   add_foreign_key "users", "year_terms"
   add_foreign_key "year_terms", "terms"
   add_foreign_key "year_terms", "years"

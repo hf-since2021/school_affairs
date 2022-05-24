@@ -1,0 +1,2 @@
+class AnnualTeacher < ApplicationRecord
+end
