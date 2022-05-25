@@ -86,9 +86,11 @@ ActiveRecord::Schema.define(version: 2022_05_24_132327) do
     t.string "last_name_reading", null: false
     t.string "first_name_reading", null: false
     t.bigint "subject_area_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["subject_area_id"], name: "index_teachers_on_subject_area_id"
+    t.index ["user_id"], name: "index_teachers_on_user_id"
   end
 
   create_table "terms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -146,6 +148,7 @@ ActiveRecord::Schema.define(version: 2022_05_24_132327) do
   add_foreign_key "responsibilities", "sections"
   add_foreign_key "subjects", "subject_areas"
   add_foreign_key "teachers", "subject_areas"
+  add_foreign_key "teachers", "users"
   add_foreign_key "users", "year_terms"
   add_foreign_key "year_terms", "terms"
   add_foreign_key "year_terms", "years"

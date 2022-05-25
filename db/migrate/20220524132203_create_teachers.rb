@@ -7,6 +7,7 @@ class CreateTeachers < ActiveRecord::Migration[6.0]
       t.string      :last_name_reading,    null: false
       t.string      :first_name_reading,   null: false
       t.references  :subject_area,         foreign_key: true
+      t.references  :user,                 foreign_key: true
       t.timestamps
     end
   end
