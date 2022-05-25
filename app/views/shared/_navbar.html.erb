@@ -40,7 +40,7 @@
           <div class="collapse" id="groupware-collapse"><%# このdiv開始タグはifを出た後につづく %>
         <% end %>
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-            <li><%= link_to "TOP", root_path, {class: "link-dark rounded"} %></li>
+            <li><%= link_to "ホワイトボード", root_path, {class: "link-dark rounded"} %></li>
           </ul>
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
             <li><%= link_to "プロジェクト管理", projects_path, {class: "link-dark rounded"} %></li>
@@ -135,8 +135,8 @@
             <%# <li><a href="#" class="link-dark rounded">ユーザー管理</a></li> %>
           </ul>
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
-            <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
-            <li><a href="#" class="link-dark rounded">教員管理</a></li>
+            <li><%= link_to "教員管理", teachers_path, {class: "link-dark rounded"} %></li>
+            <%# <li><a href="#" class="link-dark rounded">教員管理</a></li> %>
           </ul>
         </div>
       </li>

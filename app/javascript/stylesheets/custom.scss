@@ -150,6 +150,9 @@ main {
 .fixed-w-300 {
   width: 300px;
 }
+.w-100-fixed-300 {
+  width: calc(100% - 300px);
+}
 
 // ログイン画面
 .form-signin {

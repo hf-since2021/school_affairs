@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     controllers: {
       sessions: 'users/sessions'
     }
+  resources :teachers,          only: [:index, :new, :create]
   
   # マスタメンテ系
   resources :years,             only: [:index, :new, :create]

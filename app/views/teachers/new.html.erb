@@ -1,0 +1,51 @@
+<%= render "shared/navbar" %>
+<div class="split w-100 vh-100">
+  <%= render 'teachers/shared/teacher_list', {teachers: @teachers} %>
+
+  <div class="split-main w-100-fixed-250 h-100 bg-gray-200 p-3">
+    <%= form_with model: @teacher, class: "row gx-5 gy-3 m-3" do |f| %>
+      <div class="col-md-2 pe-3 my-3">
+        <%= f.label :code, "コード", class: "form-label text-nowrap" %>
+        <%= f.text_field :code, autofocus: true, autocomplete: "code", class: "form-control" %>
+      </div>
+      <div class="col-md-10 my-3">
+      </div>
+
+      <div class="col-md-4 pe-3 my-3">
+        <%= f.label :last_name, "姓", class: "form-label" %>
+        <%= f.text_field :last_name, autocomplete: "last_name", class: "form-control" %>
+      </div>
+      <div class="col-md-4 ps-3 my-3">
+        <%= f.label :first_name, "名", class: "form-label" %>
+        <%= f.text_field :first_name, autocomplete: "first_name", class: "form-control" %>
+      </div>
+      <div class="col-md-4 my-3">
+      </div>
+
+      <div class="col-md-4 pe-3 my-3">
+        <%= f.label :last_name_reading, "せい", class: "form-label" %>
+        <%= f.text_field :last_name_reading, autocomplete: "last_name_reading", class: "form-control" %>
+      </div>
+      <div class="col-md-4 ps-3 my-3">
+        <%= f.label :first_name_reading, "めい", class: "form-label" %>
+        <%= f.text_field :first_name_reading, autocomplete: "first_name_reading", class: "form-control" %>
+      </div>
+      <div class="col-md-4 my-3">
+      </div>
+
+      <div class="col-md-2 pe-3 my-3">
+        <%= f.label :subject_area_id, "担当教科", class: "form-label text-nowrap" %>
+        <%= f.collection_select :subject_area_id, @subject_areas, :id, :name, {prompt: "（教科）"}, {class: "form-control"} %>
+      </div>
+
+      <div class="col-md-2 ps-3 my-3">
+        <%= f.label :user_id, "アカウント", class: "form-label text-nowrap" %>
+        <%= f.collection_select :user_id, @users, :id, :name, {prompt: "（アカウント）"}, {class: "form-control"} %>
+      </div>
+
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">登録</button>
+      </div>
+    <% end %>
+  </div>
+</div>

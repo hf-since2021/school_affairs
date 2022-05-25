@@ -11,4 +11,5 @@ class User < ApplicationRecord
   belongs_to :year_term
   has_one    :year,  through: :year_term
   has_one    :term,  through: :year_term
+  has_one    :teacher
 end
