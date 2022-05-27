@@ -6,11 +6,29 @@ class AnnualTeachersController < ApplicationController
   end
 
   def new
+    @teachers = Teacher.includes(:annual_teachers)
+    @teacher = Teacher.find(params[:teacher_id])
+    @annual_teacher = AnnualTeacher.new
+    @jobs = Job.all
+    @sections = Section.all
+    @responsibilities = Responsibility.all
   end
 
   def create
   end
 
+  def edit
+    @teachers = Teacher.includes(:annual_teachers)
+    @teacher = Teacher.find(params[:teacher_id])
+    @annual_teacher = AnnualTeacher.find_by(year_id: @logined_term.year.id,teacher_id: params[:teacher_id])
+    @jobs = Job.all
+    @sections = Section.all
+    @responsibilities = Responsibility.all
+  end
+
+  def update
+  end
+  
   private
 
   def set_logined_term

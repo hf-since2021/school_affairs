@@ -9,19 +9,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>00000</td>
-        <td><%= link_to "新規作成", new_annual_teacher_path, {class: ""} %></td>
-        <td>----------</td>
-      </tr>
+      <%# <tr> %>
+        <%# <td>00000</td> %>
+        <%# <td>link_to "新規作成", new_annual_teacher_path, {class: ""}</td> %>
+        <%# <td>----------</td> %>
+      <%# </tr> %>
       <% teachers.each do |teacher| %>
         <tr>
-          <td><%= teacher.code %></td>
-          <td><%= "#{teacher.last_name} #{teacher.first_name}" %></td>
-          <% unless teacher.annual_teachers.find_by(year_id: @logined_term.year.id).nil? %>
-            <td>(登録済み)</td>
-          <% else %>
+          <% if teacher.annual_teachers.find_by(year_id: @logined_term.year.id).nil? %>
+            <td><%= link_to teacher.code, new_teacher_annual_teacher_path(teacher), {class: ""} %></td>
+            <td><%= "#{teacher.last_name} #{teacher.first_name}" %></td>
             <td>(未登録)</td>
+          <% else %>
+            <td><%= link_to teacher.code, teacher_edit_annual_teacher_path(teacher), {class: ""} %></td>
+            <td><%= "#{teacher.last_name} #{teacher.first_name}" %></td>
+            <td>(登録済み)</td>
           <% end %>
         </tr>
       <% end %>

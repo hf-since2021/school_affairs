@@ -3,7 +3,7 @@
   <%= render 'annual_teachers/shared/annual_teacher_list', {teachers: @teachers} %>
 
   <div class="split-main w-100-fixed-250 h-100 bg-gray-200 p-3">
-    <%= form_with model: @annual_teacher, class: "row gx-5 gy-3 m-3" do |f| %>
+    <%= form_with model: @annual_teacher, url: teacher_annual_teacher_path(@teacher), class: "row gx-5 gy-3 m-3" do |f| %>
       <div class="col-md-2 pe-3 my-3">
         <%= f.label :year, "年度", class: "form-label text-nowrap" %>
         <%= f.text_field :year, autocomplete: "year", class: "form-control", value: @logined_term.year.name, disabled: true %>

@@ -13,8 +13,12 @@ Rails.application.routes.draw do
     controllers: {
       sessions: 'users/sessions'
     }
-  resources :teachers,          only: [:index, :new, :create]
-  resources :annual_teachers,   only: [:index, :new, :create]
+  resources :teachers,          only: [:index, :new, :create] do
+    resources :annual_teachers,   only: [:new, :create]
+    get   '/annual_teachers/edit',   to: 'annual_teachers#edit',   as: 'edit_annual_teacher'
+    patch '/annual_teachers/update', to: 'annual_teachers#update', as: 'annual_teacher'
+  end
+  resources :annual_teachers,   only: [:index]
   
   # マスタメンテ系
   resources :years,             only: [:index, :new, :create]
