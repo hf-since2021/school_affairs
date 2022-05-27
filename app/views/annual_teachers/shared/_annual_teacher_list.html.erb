@@ -1,24 +1,25 @@
 <div class="split-sidebar fixed-w-300 h-100 bg-white p-3">
+  <span><%= @logined_term.year.name %></span>
   <table class="table table-striped">
     <thead>
       <tr>
         <th>コード</th>
         <th>教員名</th>
-        <th>(アカウント)</th>
+        <th>(登録有無)</th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>00000</td>
-        <td><%= link_to "新規作成", new_teacher_path, {class: ""} %></td>
-        <td>--------</td>
+        <td><%= link_to "新規作成", new_annual_teacher_path, {class: ""} %></td>
+        <td>----------</td>
       </tr>
       <% teachers.each do |teacher| %>
         <tr>
           <td><%= teacher.code %></td>
           <td><%= "#{teacher.last_name} #{teacher.first_name}" %></td>
-          <% unless teacher.user_id.nil? %>
-            <td><%= "(#{teacher.user.name})" %></td>
+          <% unless teacher.annual_teachers.find_by(year_id: @logined_term.year.id).nil? %>
+            <td>(登録済み)</td>
           <% else %>
             <td>(未登録)</td>
           <% end %>
