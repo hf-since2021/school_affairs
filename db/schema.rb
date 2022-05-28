@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_24_132327) do
+ActiveRecord::Schema.define(version: 2022_05_28_133417) do
+
+  create_table "annual_students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.bigint "year_id", null: false
+    t.bigint "student_id", null: false
+    t.string "school_grade"
+    t.string "klass"
+    t.string "number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_annual_students_on_student_id"
+    t.index ["year_id"], name: "index_annual_students_on_year_id"
+  end
 
   create_table "annual_teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "teacher_id", null: false
@@ -61,6 +73,17 @@ ActiveRecord::Schema.define(version: 2022_05_24_132327) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "code", null: false
+  end
+
+  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_reading", null: false
+    t.string "first_name_reading", null: false
+    t.integer "sex", limit: 1, default: 0, null: false, unsigned: true
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "subject_areas", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -140,6 +163,8 @@ ActiveRecord::Schema.define(version: 2022_05_24_132327) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "annual_students", "students"
+  add_foreign_key "annual_students", "years"
   add_foreign_key "annual_teachers", "jobs"
   add_foreign_key "annual_teachers", "responsibilities"
   add_foreign_key "annual_teachers", "sections"
