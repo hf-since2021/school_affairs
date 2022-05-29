@@ -1,3 +1,4 @@
+import "../stylesheets/gantt"
 import Gantt from "frappe-gantt"
 
 window.onload = function() {
