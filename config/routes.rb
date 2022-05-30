@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   # グループウェア系
   resources :projects, only: [:index]
 
+  # 生徒管理
+  # resources :students, only: [:index, :new, :create]
+  resources :annual_students, only: [:index, :new, :create]
+
+
   # ユーザー管理系
   resources :users, only: [:index, :new, :create, :edit, :update]
     get  'users/select', to: 'users#select', as: 'user_select'
@@ -19,17 +24,19 @@ Rails.application.routes.draw do
     patch '/annual_teachers/update', to: 'annual_teachers#update', as: 'annual_teacher'
   end
   resources :annual_teachers,   only: [:index]
-  
+
   # マスタメンテ系
-  resources :years,             only: [:index, :new, :create]
-  resources :terms,             only: [:index, :new, :create]
-  resources :year_terms,        only: [:index, :new, :create]
-  resources :subject_areas,     only: [:index, :new, :create]
-  resources :subjects,          only: [:index, :new, :create]
-  # resources :subject_areas, only: [:index, :new, :create] do
-  #   resources :subjects, param: :id, only: [:index]
+  # scope :admin do
+    resources :years,             only: [:index, :new, :create]
+    resources :terms,             only: [:index, :new, :create]
+    resources :year_terms,        only: [:index, :new, :create]
+    resources :subject_areas,     only: [:index, :new, :create]
+    resources :subjects,          only: [:index, :new, :create]
+    # resources :subject_areas, only: [:index, :new, :create] do
+    #   resources :subjects, param: :id, only: [:index]
+    # end
+    resources :jobs,              only: [:index, :new, :create]
+    resources :sections,          only: [:index, :new, :create]
+    resources :responsibilities,  only: [:index, :new, :create]
   # end
-  resources :jobs,              only: [:index, :new, :create]
-  resources :sections,          only: [:index, :new, :create]
-  resources :responsibilities,  only: [:index, :new, :create]
 end

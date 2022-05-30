@@ -1,0 +1,12 @@
+<%= render "shared/navbar" %>
+
+<div style="padding-top: 72px;">
+  <div id="mytable"></div>
+
+  <%= form_with url: annual_students_path, id: "form" do |f| %>
+    <%= f.submit :submit, id: "submit", value: "保存" %>
+  <% end %>
+  <%# <form> %>
+    <%# <input id="submit" type="submit" value="保存"> %>
+  <%# </form> %>
+</div>
