@@ -1,6 +1,11 @@
 window.onload = function() {
+	// 入力欄オブジェクトの取得
+	const idInput = document.getElementById('task-id');
+	const nameInput = document.getElementById('task-name');
+	const descriptionInput = document.getElementById('task-description');
+
   // タスクを用意
-  var tasks = [
+  let tasks = [
     {
     	id: 'id1',
     	name: 'タスク1',
@@ -44,12 +49,12 @@ window.onload = function() {
   ];
   
   // gantt をセットアップ
-  var gantt = new globalGantt("#gantt", tasks, {
+  const gantt = new globalGantt("#gantt", tasks, {
     // ダブルクリック時
     on_click: (task) => {
       // console.log(task.id);
-			let tasks = [{id: 'id1', name: 'タスク1', description: '1つめのタスク', start: '2022-05-12', end: '2022-05-18', progress: 100,}];
-			gantt.refresh(tasks);
+			// let tasks = [{id: 'id1', name: 'タスク1', description: '1つめのタスク', start: '2022-05-12', end: '2022-05-18', progress: 100,}];
+			// gantt.refresh(tasks);
     },
     // 日付変更時
     on_date_change: (task, start, end) => {
@@ -60,6 +65,15 @@ window.onload = function() {
       console.log(`${task.name}: change progress to ${progress}%`);
     },
   });
+	
+	// イベントを追加
+	const createBtn = document.getElementById('task-create');
+	createBtn.onclick = () => {
+		tasks = gantt.tasks;
+		lastTask = tasks.slice(-1)[0];
+		tasks.push({id: idInput.value, name: nameInput.value, description: descriptionInput.value, start: lastTask.start, end: lastTask.end, progress: 0,});
+		gantt.refresh(tasks);
+	};
 };
 
 // Gantt("#id", tasks, {options})
