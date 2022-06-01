@@ -1,8 +1,12 @@
 window.onload = function() {
 	// 入力欄オブジェクトの取得
-	const idInput = document.getElementById('task-id');
-	const nameInput = document.getElementById('task-name');
-	const descriptionInput = document.getElementById('task-description');
+	const inputId = document.getElementById('task-id');
+	const inputName = document.getElementById('task-name');
+	const inputDescription = document.getElementById('task-description');
+	// ボタンオブジェクトの取得
+	const createBtn = document.getElementById('task-create');
+	const updateBtn = document.getElementById('task-update');
+	const clearBtn = document.getElementById('input-clear');
 
   // タスクを用意
   let tasks = [
@@ -52,6 +56,13 @@ window.onload = function() {
   const gantt = new globalGantt("#gantt", tasks, {
     // ダブルクリック時
     on_click: (task) => {
+			inputId.value = task.id;
+			inputId.disabled = true;
+			inputName.value = task.name;
+			inputDescription.value = task.description;
+			createBtn.disabled = true;
+			clearBtn.disabled = false;
+
       // console.log(task.id);
 			// let tasks = [{id: 'id1', name: 'タスク1', description: '1つめのタスク', start: '2022-05-12', end: '2022-05-18', progress: 100,}];
 			// gantt.refresh(tasks);
@@ -67,11 +78,19 @@ window.onload = function() {
   });
 	
 	// イベントを追加
-	const createBtn = document.getElementById('task-create');
 	createBtn.onclick = () => {
-		tasks = gantt.tasks;
-		lastTask = tasks.slice(-1)[0];
-		tasks.push({id: idInput.value, name: nameInput.value, description: descriptionInput.value, start: lastTask.start, end: lastTask.end, progress: 0,});
+		const tasks = gantt.tasks;
+		const lastTask = tasks.slice(-1)[0];
+		tasks.push({id: inputId.value, name: inputName.value, description: inputDescription.value, start: lastTask.start, end: lastTask.end, progress: 0,});
+		gantt.refresh(tasks);
+	};
+	updateBtn.onclick = () => {
+		const tasks = gantt.tasks;
+		const index = tasks.map(e => e.id).indexOf(inputId.value);
+		const task = tasks[index];
+		task.name = inputName.value;
+		task.description = inputDescription.value;
+		tasks.splice(index, 1, task);
 		gantt.refresh(tasks);
 	};
 };
