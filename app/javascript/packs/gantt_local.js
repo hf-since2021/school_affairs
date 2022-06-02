@@ -6,6 +6,7 @@ window.onload = function() {
 	// ボタンオブジェクトの取得
 	const createBtn = document.getElementById('task-create');
 	const updateBtn = document.getElementById('task-update');
+	const destroyBtn = document.getElementById('task-destroy');
 	const clearBtn = document.getElementById('input-clear');
 
   // タスクを用意
@@ -60,7 +61,10 @@ window.onload = function() {
 			inputId.disabled = true;
 			inputName.value = task.name;
 			inputDescription.value = task.description;
+
 			createBtn.disabled = true;
+			updateBtn.disabled = false;
+			destroyBtn.disabled = false;
 			clearBtn.disabled = false;
 
       // console.log(task.id);
@@ -92,6 +96,22 @@ window.onload = function() {
 		task.description = inputDescription.value;
 		tasks.splice(index, 1, task);
 		gantt.refresh(tasks);
+	};
+	destroyBtn.onclick = () => {
+		const tasks = gantt.tasks;
+		const index = tasks.map(e => e.id).indexOf(inputId.value);
+		tasks.splice(index, 1);
+		gantt.refresh(tasks);
+
+		createBtn.disabled = false;
+		updateBtn.disabled = true;
+		destroyBtn.disabled = true;
+		clearBtn.disabled = true;
+
+		inputId.disabled = false;
+		inputId.value = "";
+		inputName.value = "";
+		inputDescription.value = "";
 	};
 };
 
