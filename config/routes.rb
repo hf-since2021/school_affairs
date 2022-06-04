@@ -39,4 +39,7 @@ Rails.application.routes.draw do
     resources :sections,          only: [:index, :new, :create]
     resources :responsibilities,  only: [:index, :new, :create]
   # end
+
+  # 欠席連絡・出欠席管理
+  resources :contacts, only: [:index]
 end
