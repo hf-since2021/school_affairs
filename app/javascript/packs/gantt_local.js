@@ -1,117 +1,100 @@
 window.onload = function() {
-	// 入力欄オブジェクトの取得
-	const inputId = document.getElementById('task-id');
-	const inputName = document.getElementById('task-name');
-	const inputDescription = document.getElementById('task-description');
-	// ボタンオブジェクトの取得
-	const createBtn = document.getElementById('task-create');
-	const updateBtn = document.getElementById('task-update');
-	const destroyBtn = document.getElementById('task-destroy');
-	const clearBtn = document.getElementById('input-clear');
+	const drawBtn = document.getElementById('task-draw');
+	drawBtn.onclick = () => {
+		// 入力欄オブジェクトの取得
+		const inputId = document.getElementById('task-id');
+		const inputName = document.getElementById('task-name');
+		const inputDescription = document.getElementById('task-description');
+		// ボタンオブジェクトの取得
+		const createBtn = document.getElementById('task-create');
+		const updateBtn = document.getElementById('task-update');
+		const destroyBtn = document.getElementById('task-destroy');
+		const clearBtn = document.getElementById('input-clear');
 
-  // タスクを用意
-  let tasks = [
-    {
-    	id: 'id1',
-    	name: 'タスク1',
-    	description: '1つめのタスク',
-    	start: '2022-05-12',
-    	end: '2022-05-18',
-    	progress: 100,
-    },
-    {
-    	id: 'id2',
-    	name: 'タスク2',
-    	description: '2つめのタスク',
-    	start: '2022-05-14',
-    	end: '2022-05-18',
-    	progress: 100,
-    },
-    {
-    	id: 'id3',
-    	name: 'タスク3',
-    	description: '3つめのタスク',
-    	start: '2022-05-17',
-    	end: '2022-05-25',
-    	progress: 40,
-    },
-    {
-    	id: 'id4',
-    	name: 'タスク4',
-    	description: '4つめのタスク',
-    	start: '2022-05-19',
-    	end: '2022-05-27',
-    	progress: 50,
-    },
-    {
-    	id: 'id5',
-    	name: 'タスク5',
-    	description: '5つめのタスク',
-    	start: '2022-05-26',
-    	end: '2022-05-28',
-    	progress: 20,
-    },
-  ];
-  
-  // gantt をセットアップ
-  const gantt = new globalGantt("#gantt", tasks, {
-    // ダブルクリック時
-    on_click: (task) => {
-			inputId.value = task.id;
-			inputId.disabled = true;
-			inputName.value = task.name;
-			inputDescription.value = task.description;
+		// タスクを取得
+		const XHR = new XMLHttpRequest();
+		XHR.open("GET", location.pathname + "/tasks", true);
+		XHR.responseType = "json";
+		XHR.send();
+		XHR.onload = () => {
+			// console.log(XHR.response)
+			const tasks = XHR.response
+			
+			// gantt をセットアップ
+			const gantt = new globalGantt("#gantt", tasks, {
+				// ダブルクリック時
+				on_click: (task) => {
+					inputId.value = task.id;
+					inputId.disabled = true;
+					inputName.value = task.name;
+					inputDescription.value = task.description;
 
-			createBtn.disabled = true;
-			updateBtn.disabled = false;
-			destroyBtn.disabled = false;
-			clearBtn.disabled = false;
+					createBtn.disabled = true;
+					updateBtn.disabled = false;
+					destroyBtn.disabled = false;
+					clearBtn.disabled = false;
+				},
+				// 日付変更時
+				on_date_change: (task, start, end) => {
+					console.log(`${task.name}: change date`);
+				},
+				// 進捗変更時
+				on_progress_change: (task, progress) => {
+					console.log(`${task.name}: change progress to ${progress}%`);
+				},
+			});
+			
+			// イベントを追加
+			createBtn.onclick = () => {
+				const tasks = gantt.tasks;
+				const lastTask = tasks.slice(-1)[0];
+				tasks.push({id: inputId.value, name: inputName.value, description: inputDescription.value, start: lastTask.start, end: lastTask.end, progress: 0,});
+				gantt.refresh(tasks);
 
-      // console.log(task.id);
-			// let tasks = [{id: 'id1', name: 'タスク1', description: '1つめのタスク', start: '2022-05-12', end: '2022-05-18', progress: 100,}];
-			// gantt.refresh(tasks);
-    },
-    // 日付変更時
-    on_date_change: (task, start, end) => {
-      console.log(`${task.name}: change date`);
-    },
-    // 進捗変更時
-    on_progress_change: (task, progress) => {
-      console.log(`${task.name}: change progress to ${progress}%`);
-    },
-  });
-	
-	// イベントを追加
-	createBtn.onclick = () => {
-		const tasks = gantt.tasks;
-		const lastTask = tasks.slice(-1)[0];
-		tasks.push({id: inputId.value, name: inputName.value, description: inputDescription.value, start: lastTask.start, end: lastTask.end, progress: 0,});
-		gantt.refresh(tasks);
-	};
-	updateBtn.onclick = () => {
-		const tasks = gantt.tasks;
-		const index = tasks.map(e => e.id).indexOf(inputId.value);
-		const task = tasks[index];
-		task.name = inputName.value;
-		task.description = inputDescription.value;
-		tasks.splice(index, 1, task);
-		gantt.refresh(tasks);
-	};
-	destroyBtn.onclick = () => {
-		const tasks = gantt.tasks;
-		const index = tasks.map(e => e.id).indexOf(inputId.value);
-		tasks.splice(index, 1);
-		gantt.refresh(tasks);
+				inputId.value = "";
+				inputName.value = "";
+				inputDescription.value = "";
+			};
+			updateBtn.onclick = () => {
+				const tasks = gantt.tasks;
+				const index = tasks.map(e => e.id).indexOf(inputId.value);
+				const task = tasks[index];
+				task.name = inputName.value;
+				task.description = inputDescription.value;
+				tasks.splice(index, 1, task);
+				gantt.refresh(tasks);
+			};
+			destroyBtn.onclick = () => {
+				const tasks = gantt.tasks;
+				const index = tasks.map(e => e.id).indexOf(inputId.value);
+				tasks.splice(index, 1);
+				gantt.refresh(tasks);
 
-		createBtn.disabled = false;
-		updateBtn.disabled = true;
-		destroyBtn.disabled = true;
-		clearBtn.disabled = true;
+				createBtn.disabled = false;
+				updateBtn.disabled = true;
+				destroyBtn.disabled = true;
+				clearBtn.disabled = true;
 
-		inputId.disabled = false;
-		inputId.value = "";
-		inputName.value = "";
-		inputDescription.value = "";
+				inputId.disabled = false;
+				inputId.value = "";
+				inputName.value = "";
+				inputDescription.value = "";
+			};
+			clearBtn.onclick = () => {
+				createBtn.disabled = false;
+				updateBtn.disabled = true;
+				destroyBtn.disabled = true;
+				clearBtn.disabled = true;
+
+				inputId.disabled = false;
+				inputId.value = "";
+				inputName.value = "";
+				inputDescription.value = "";
+			};
+
+			//「表示する」のボタンを削除
+			drawBtn.remove();
+    };
 	};
 };
 

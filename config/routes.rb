@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   root to: "informations#index"
 
   # グループウェア系
-  resources :projects, only: [:index]
+  resources :projects, only: [:index, :show] do
+    get '/tasks',  to: 'projects#show2'
+  end
 
   # 生徒管理
   # resources :students, only: [:index, :new, :create]

@@ -1,0 +1,74 @@
+<%#= input:type=hiddenで渡した方が良いか %>
+<div id='tasks-data' data-json=<%= @tasks.to_json %>></div>
+
+<%= render "shared/navbar" %>
+
+<div class="split w-100 vh-100">
+
+  <div class="split-sidebar fixed-w-250 h-100 bg-white p-3">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>プロジェクト名</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <%# <td><a href="#">体育祭2022</a></td> %>          
+          <td><%= link_to @projects[0].name, project_path(1), {class: ""} %></td>
+        </tr>
+        <tr>
+          <td><a href="#">学期末処理</a></td>
+        </tr>
+        <tr>
+          <td><a href="#">修学旅行2022</a></td>
+        </tr>
+        <tr>
+          <td><a href="#">年度更新作業</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="split-main w-100-fixed-250 h-100 bg-gray-200 p-3">
+    <h4>プロジェクト　<%= @project_name %></h4>
+    <button id="task-draw" type="button" class="btn btn-outline-danger">表示する</button>
+    <div class='gantt-wrap'>
+      <svg id="gantt"></svg>
+    </div>
+
+    <div style="width:600px;">
+      <div class="d-flex justify-content-between mt-3 px-3 py-2">
+        <div>
+          <button id="task-create" type="button" class="btn btn-outline-primary">新規</button>
+          <button id="task-update" type="button" class="btn btn-outline-primary" disabled>編集</button>
+          <button id="task-destroy" type="button" class="btn btn-outline-primary" disabled>削除</button>
+          <button id="input-clear" type="button" class="btn btn-outline-primary" disabled>クリア</button>
+        </div>
+        <div>
+          <button id="send" type="button" class="btn btn-outline-success">保存</button>
+        </div>
+      </div>
+      <div style="width:600px;">
+        <form class="px-3 py-2" style="widht:100%;">
+          <div style="display:inline-block;width:100px;">
+            <label for="task-id" class="form-label">タスクID</label>
+            <input id="task-id" name="task-id" type="text" class="form-control">
+          </div>
+          <div style="display:inline-block;width:450px;margin-left:10px;">
+            <label for="task-name" class="form-label">タスク名</label>
+            <input id="task-name" name="task-name" type="text" class="form-control">
+          </div>
+
+          <div class="pt-2">
+            <label for="task-description" class="form-label">詳細</label>
+            <input id="task-description" name="task-description" type="text" class="form-control">
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<%= javascript_pack_tag 'gantt_local', 'data-turbolinks-track': 'reload' %>
