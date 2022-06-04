@@ -1,6 +1,6 @@
 window.onload = function() {
-	const drawBtn = document.getElementById('task-draw');
-	drawBtn.onclick = () => {
+	// const drawBtn = document.getElementById('task-draw');
+	// drawBtn.onclick = () => {
 		// 入力欄オブジェクトの取得
 		const inputId = document.getElementById('task-id');
 		const inputName = document.getElementById('task-name');
@@ -17,9 +17,9 @@ window.onload = function() {
 		XHR.responseType = "json";
 		XHR.send();
 		XHR.onload = () => {
-			// console.log(XHR.response)
 			const tasks = XHR.response
 			
+			debugger
 			// gantt をセットアップ
 			const gantt = new globalGantt("#gantt", tasks, {
 				// ダブルクリック時
@@ -93,9 +93,9 @@ window.onload = function() {
 			};
 
 			//「表示する」のボタンを削除
-			drawBtn.remove();
+			// drawBtn.remove();
     };
-	};
+	// };
 };
 
 // Gantt("#id", tasks, {options})
