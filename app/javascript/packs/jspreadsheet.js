@@ -3,10 +3,10 @@ import jexcel from "jspreadsheet-ce"
 import "../stylesheets/jspreadsheet"
 
 const data = [
-  ["A",1,"田中","たくま","M"],
-  ["A",2,"山田","はな","F"],
-  ["B",1,"細島","よしこ","F"],
-  ["B",2,"安倍","まさひろ","M"]
+  ["A",1,,"田中","たくま","M"],
+  ["A",2,,"山田","はな","F"],
+  ["B",1,,"細島","よしこ","F"],
+  ["B",2,,"安倍","まさひろ","M"]
 ];
 
 window.onload = () => {
@@ -14,11 +14,12 @@ window.onload = () => {
   const myTable = jexcel(table, {
       data: data,
       columns: [
-        {title: '組', readOnly: true},
-        {title: '番号'},
-        {title: '姓'},
-        {title: '名'},
-        {title: '性別'}
+        {title: '旧組', width:60, readOnly: true},
+        {title: '旧番号', width:60, readOnly: true},
+        {title: '新組', width:60},
+        {title: '姓', width:100, readOnly: true},
+        {title: '名', width:100, readOnly: true},
+        {title: '性別', width:50, readOnly: true}
       ],
   });
   // 行追加機能の停止
@@ -44,6 +45,7 @@ window.onload = () => {
     const XHR = new XMLHttpRequest();
     XHR.open("POST", "/annual_students", true);
 
+    // ヘッダーからトークンを取得
     const token = document.querySelector('meta[name="csrf-token"]').content;
     XHR.setRequestHeader('X-CSRF-Token', token);
     XHR.setRequestHeader("Content-Type", "application/json");

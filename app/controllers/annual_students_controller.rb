@@ -9,11 +9,11 @@ class AnnualStudentsController < ApplicationController
     # htmlに埋め込んだデータからJavascriptでtableデータを整形する必要がなくなりそう。
   end
 
-  def new
+  def edit
   end
 
-  def create
-    binding.pry
+  def update
+    # binding.pry
   end
 
   private

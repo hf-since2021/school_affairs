@@ -22,7 +22,6 @@ class AnnualTeachersController < ApplicationController
     @responsibilities = Responsibility.all
 
     @annual_teacher = AnnualTeacher.create(annual_teacher_params)
-    # redirect_to action: :index
     redirect_to action: :edit
   end
 

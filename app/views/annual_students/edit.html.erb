@@ -1,0 +1,17 @@
+<%= render "shared/navbar" %>
+<div class="split w-100 vh-100">
+  <%#= render 'annual_students/shared/annual_student_list', {students: @students} %>
+  <%= render 'annual_students/shared/annual_student_list' %>
+
+  <div class="split-main w-100-fixed-250 h-100 bg-gray-200 p-3">
+    <div id="mytable"></div>
+
+    <%= form_with url: annual_students_path, id: "form" do |f| %>
+      <%#= f.submit :submit, id: "submit", value: "保存" %>
+      <button id="submit" type="button" class="btn btn-outline-success">保存</button>
+    <% end %>
+    <%# <form> %>
+      <%# <input id="submit" type="submit" value="保存"> %>
+    <%# </form> %>
+  </div>
+</div>

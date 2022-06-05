@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   # 生徒管理
   # resources :students, only: [:index, :new, :create]
-  resources :annual_students, only: [:index, :new, :create]
+  resources :annual_students, only: [:index, :edit]
 
-  # 管理者系
+  # 管理者系 「/admin」から始まるURIを権限チェック
   scope :admin do
     # ユーザー管理系
     resources :users, only: [:index, :new, :create, :edit, :update]
@@ -43,7 +43,7 @@ Rails.application.routes.draw do
   controllers: {
     sessions: 'users/sessions'
   }
-  
+
   # 欠席連絡・出欠席管理
   resources :contacts, only: [:index]
 end

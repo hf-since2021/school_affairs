@@ -1,0 +1,21 @@
+<div class="split-sidebar fixed-w-300 h-100 bg-white p-3">
+  <span><%= @logined_term.year.name %></span>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>学年</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= link_to "1年生", edit_annual_student_path(1), {class: ""} %></td>
+      </tr>
+      <tr>
+        <td><%= link_to "2年生", edit_annual_student_path(2), {class: ""} %></td>
+      </tr>
+      <tr>
+        <td><%= link_to "3年生", edit_annual_student_path(3), {class: ""} %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
