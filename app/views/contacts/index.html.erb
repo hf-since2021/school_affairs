@@ -1,1 +1,9 @@
 <%= render "shared/navbar" %>
+<div class="split w-100 vh-100">
+  <%#= render 'contacts/shared/contact_list', {contacts: @contacts} %>
+  <%= render 'contacts/shared/contact_list' %>
+
+  <div class="split-main w-100-fixed-250 h-100 bg-gray-200 p-3">
+    ここに表示されます。
+  </div>
+</div>

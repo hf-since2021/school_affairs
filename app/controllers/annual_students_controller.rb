@@ -10,6 +10,7 @@ class AnnualStudentsController < ApplicationController
   end
 
   def edit
+    @school_grade = params[:id]
   end
 
   def update

@@ -110,6 +110,9 @@
           <div class="collapse" id="absence-collapse"><%# このdiv開始タグはifを出た後につづく %>
         <% end %>
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
+            <li><%= link_to "欠席連絡取得", contacts_path, {class: "link-dark rounded"} %></li>
+          </ul>
+          <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 mt-1 small">
             <li><%#= link_to "お知らせ", xxx_path, {class: "link-dark rounded"} %></li>
             <li><a href="#" class="link-dark rounded">出欠席管理</a></li>
           </ul>

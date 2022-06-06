@@ -10,6 +10,9 @@ Rails.application.routes.draw do
   # resources :students, only: [:index, :new, :create]
   resources :annual_students, only: [:index, :edit]
 
+  # 欠席連絡取得
+  resources :contacts, only: [:index, :show]
+
   # 管理者系 「/admin」から始まるURIを権限チェック
   scope :admin do
     # ユーザー管理系

@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
   # 権限のない操作をrootへリダイレクト
   rescue_from CanCan::AccessDenied do |_exception|
     # if user_signed_in?
-      redirect_to root_path, alert: '画面を閲覧する権限がありません。'
+      # redirect_to root_path, alert: '画面を閲覧する権限がありません。'
+      redirect_to new_user_session_path  #もし、権限を一つも持っていないとリダイレクトになってしまう。
     # else
       # redirect_to new_user_session_path
     # end

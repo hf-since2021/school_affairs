@@ -1,0 +1,48 @@
+<%= render "shared/navbar" %>
+<div class="split w-100 vh-100">
+  <%#= render 'contacts/shared/contact_list', {contacts: @contacts} %>
+  <%= render 'contacts/shared/contact_list' %>
+
+  <div class="split-main w-100-fixed-250 h-100 bg-gray-200 p-3">
+    <table class="table table-striped" style="width:700px;">
+      <thead>
+        <tr>
+          <th>日付</th>
+          <th>生徒</th>
+          <th>届出</th>
+          <th>詳細</th>
+          <th>理由</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @contacts["data"].each do |datum| %>
+          <tr>
+            <td><%= datum["date"] %></td>
+            <td><%= datum["name"] %></td>
+            <td><%= @request_type[datum["request_type_id"]] %></td>
+            <% if datum["request_type_id"] == 1 %>
+              <td><%= @absent_type[datum["absent_type_id"]] %></td>
+            <% else %>
+              <td><%= @in_and_out_time[datum["in_and_out_time_id"]] %></td>
+            <% end %>
+            <td><%= datum["reason"] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<%# @contacts["data"][0]["id"] %>
+
+<%# => {"id"=>1,
+ "user_id"=>1,
+ "name"=>"s001",
+ "date"=>"2022-06-04",
+ "request_type_id"=>1,
+ "absent_type_id"=>2,
+ "in_and_out_time_id"=>nil,
+ "reason"=>"体調不良のため",
+ "sync_status_id"=>1,
+ "created_at"=>"2022-06-04T12:17:05.396Z",
+ "updated_at"=>"2022-06-04T12:17:05.396Z"} %>
