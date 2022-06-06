@@ -25,10 +25,10 @@ https://school-affairs-808.herokuapp.com/
 # 実装予定の機能
 
 # データベース設計
-![データベース設計](ER図.png)
+![データベース設計](ERD.png)
 
 # 画面遷移図
-![画面遷移図](画面遷移図.png)
+![画面遷移図](STD.png)
 
 # 開発環境
 
