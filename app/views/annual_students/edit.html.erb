@@ -4,6 +4,7 @@
   <%= render 'annual_students/shared/annual_student_list' %>
 
   <div class="split-main w-100-fixed-250 h-100 bg-gray-200 p-3">
+    <h4>クラス編成 「<%= "#{@school_grade}年生" %>」</h4>
     <div id="mytable"></div>
 
     <%= form_with url: annual_students_path, id: "form" do |f| %>
