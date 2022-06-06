@@ -19,7 +19,6 @@ window.onload = function() {
 		XHR.onload = () => {
 			const tasks = XHR.response
 			
-			debugger
 			// gantt をセットアップ
 			const gantt = new globalGantt("#gantt", tasks, {
 				// ダブルクリック時
