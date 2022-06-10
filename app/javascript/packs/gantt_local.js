@@ -20,7 +20,7 @@ window.onload = function() {
 			const tasks = XHR.response
 			
 			// gantt をセットアップ
-			const gantt = new globalGantt("#gantt", tasks, {
+			const gantt = new Gantt("#gantt", tasks, {
 				// ダブルクリック時
 				on_click: (task) => {
 					inputId.value = task.id;
