@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_04_155347) do
+ActiveRecord::Schema.define(version: 2022_06_04_155336) do
 
   create_table "annual_students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "year_id", null: false
@@ -108,14 +108,6 @@ ActiveRecord::Schema.define(version: 2022_06_04_155347) do
     t.index ["subject_area_id"], name: "index_subjects_on_subject_area_id"
   end
 
-  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
-    t.bigint "project_id", null: false
-    t.json "data", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["project_id"], name: "index_tasks_on_project_id"
-  end
-
   create_table "teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.string "code", null: false
     t.string "last_name", null: false
@@ -186,7 +178,6 @@ ActiveRecord::Schema.define(version: 2022_06_04_155347) do
   add_foreign_key "annual_teachers", "years"
   add_foreign_key "responsibilities", "sections"
   add_foreign_key "subjects", "subject_areas"
-  add_foreign_key "tasks", "projects"
   add_foreign_key "teachers", "subject_areas"
   add_foreign_key "teachers", "users"
   add_foreign_key "users", "year_terms"
