@@ -1,4 +1,4 @@
-import "../stylesheets/jspreadsheet"
+//ここでscssを読み込もうとしてもデプロイ環境ではファイルがコンパイルされない
+// import "../stylesheets/jspreadsheet"
 import jexcel from "jspreadsheet-ce"
-// import "jspreadsheet-ce"
 window.jexcel = jexcel

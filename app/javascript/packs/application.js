@@ -2,6 +2,9 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
+// このファイルは、このディレクトリに存在する他のファイルとともに、Webpackによって自動的にコンパイルされます。
+// 実際のアプリケーションロジックはapp/javascript内の適切な構造体に配置し、これらのpackファイルはそのコード
+// を参照するためにのみ使用し、コンパイルされることをお勧めします。(DeepL)
 
 require("@rails/ujs").start()
 require("turbolinks").start()
