@@ -1,7 +1,7 @@
 # Formオブジェクトパターン
 class FreshmanStudent
   include ActiveModel::Model
-  # 保存したいカラム名をアクセサとして定義
+  # 保存したいカラム名をアクセサとして定義(newで生成される変数たち)
   attr_accessor :code, :last_name, :first_name, :last_name_reading, :first_name_reading, :sex,
                 :year_id, :school_grade#, :klass, :number
                 #student_idは不要
@@ -28,8 +28,9 @@ class FreshmanStudent
 
   # validations ...
 
-  # def save
-  #   student = Student.create(code: code, ...)
-  #   AnnualStudent.create(year_id: xxx, student_id: student.id, ...)
-  # end
+  def save
+    student = Student.create(code: code, last_name: last_name, first_name: first_name,
+                             last_name_reading: last_name_reading, first_name_reading: first_name_reading, sex: sex)
+    AnnualStudent.create(year_id: year_id, student_id: student.id, school_grade: school_grade)
+  end
 end
