@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # 生徒管理
   # resources :students, only: [:index, :new, :create]
   resources :annual_students, only: [:index, :edit]
-  resources :freshmans, only: [:index]
+  resources :freshmans, only: [:index, :new, :create]
 
   # 欠席連絡取得
   resources :contacts, only: [:index, :show]

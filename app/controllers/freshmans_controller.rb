@@ -8,6 +8,16 @@ class FreshmansController < ApplicationController
     @freshman_student = FreshmanStudent.new
   end
 
+  def create
+    @freshman_student = FreshmanStudent.new(freshman_params)
+    # if @freshman_student.valid?
+      @freshman_student.save
+      redirect_to root_path
+    # else
+    #   render :new
+    # end
+  end
+
   private
 
   def set_logined_term
@@ -16,7 +26,7 @@ class FreshmansController < ApplicationController
 
   def freshman_params
     params.require(:freshman_student)
-          .permit(:code, ...)
+          .permit(:code, :last_name, :first_name, :last_name_reading, :first_name_reading, :sex, :school_grade)
           .merge(year_id: @logined_term.year.id)
   end
 end

@@ -4,19 +4,50 @@
   <%= render 'freshmans/shared/freshman_list' %>
 
   <div class="split-main w-100-fixed-250 h-100 bg-gray-200 p-3">
-    <%#= form_with model: @student, class: "row gx-5 gy-3 m-3" do |f| %>
+    <%= form_with model: @freshman_student, url: freshmans_path, class: "row gx-5 gy-3 m-3" do |f| %>
       <div class="col-md-2 pe-3 my-3">
-        <%#= f.label :code, "コード", class: "form-label text-nowrap" %>
-        <%#= f.text_field :code, autofocus: true, autocomplete: "code", class: "form-control" %>
+        <%= f.label :code, "コード", class: "form-label text-nowrap" %>
+        <%= f.text_field :code, autofocus: true, autocomplete: "code", class: "form-control" %>
+      </div>
+      <div class="col-md-10">
+      </div>
+
+      <div class="col-md-4 pe-3 my-3">
+        <%= f.label :last_name, "姓", class: "form-label" %>
+        <%= f.text_field :last_name, autocomplete: "last_name", class: "form-control" %>
+      </div>
+      <div class="col-md-4 ps-3 my-3">
+        <%= f.label :first_name, "名", class: "form-label" %>
+        <%= f.text_field :first_name, autocomplete: "first_name", class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+      </div>
+
+      <div class="col-md-4 pe-3 my-3">
+        <%= f.label :last_name_reading, "せい", class: "form-label" %>
+        <%= f.text_field :last_name_reading, autocomplete: "last_name_reading", class: "form-control" %>
+      </div>
+      <div class="col-md-4 ps-3 my-3">
+        <%= f.label :first_name_reading, "めい", class: "form-label" %>
+        <%= f.text_field :first_name_reading, autocomplete: "first_name_reading", class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+      </div>
+
+      <div class="col-md-2 pe-3 my-3">
+        <%= f.label :sex, "性別", class: "form-label" %>
+        <%= f.text_field :sex, autocomplete: "sex", class: "form-control" %>
       </div>
       <div class="col-md-3 ps-3 my-3">
-        <%#= f.label :name, "職名", class: "form-label" %>
-        <%#= f.text_field :name, autocomplete: "name", class: "form-control" %>
+        <%= f.label :school_grade, "新学年", class: "form-label" %>
+        <%= f.text_field :school_grade, autocomplete: "school_grade", class: "form-control" %>
+      </div>
+      <div class="col-md-7">
       </div>
 
       <div class="col-12">
         <button type="submit" class="btn btn-primary">登録</button>
       </div>
-    <%# end %>
+    <% end %>
   </div>
 </div>
