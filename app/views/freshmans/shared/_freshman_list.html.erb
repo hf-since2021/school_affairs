@@ -7,8 +7,13 @@
     </thead>
     <tbody>
       <tr>
-        <%= link_to "新規作成", new_freshman_path, {class: ""} %>
+        <td><%= link_to "新規作成", new_freshman_path, {class: ""} %></td>
       </tr>
+      <% freshmans.each do |freshman| %>
+        <tr>
+          <td><%= "#{freshman.student.last_name} #{freshman.student.first_name}" %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

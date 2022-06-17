@@ -3,10 +3,12 @@ class FreshmansController < ApplicationController
 
   def index
     # 次年度を紐付けなければならないので、これではダメ
-    @freshman_students = AnnualStudent.where(year_id: @logined_term.year.id).includes(:students)
+    @freshman_students = AnnualStudent.where(year_id: @logined_term.year.id).includes(:student)
   end
 
   def new
+    # 次年度を紐付けなければならないので、これではダメ
+    @freshman_students = AnnualStudent.where(year_id: @logined_term.year.id).includes(:student)
     @freshman_student = FreshmanStudent.new
   end
 
