@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_04_155336) do
+ActiveRecord::Schema.define(version: 2022_06_19_131439) do
 
   create_table "annual_students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
     t.bigint "year_id", null: false
@@ -46,6 +46,21 @@ ActiveRecord::Schema.define(version: 2022_06_04_155336) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "code", null: false
+  end
+
+  create_table "lessons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
+    t.string "code", null: false
+    t.string "name", null: false
+    t.string "school_grade"
+    t.string "klass"
+    t.bigint "subject_id", null: false
+    t.bigint "year_term_id", null: false
+    t.bigint "teacher_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["subject_id"], name: "index_lessons_on_subject_id"
+    t.index ["teacher_id"], name: "index_lessons_on_teacher_id"
+    t.index ["year_term_id"], name: "index_lessons_on_year_term_id"
   end
 
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb3", force: :cascade do |t|
@@ -176,6 +191,9 @@ ActiveRecord::Schema.define(version: 2022_06_04_155336) do
   add_foreign_key "annual_teachers", "sections"
   add_foreign_key "annual_teachers", "teachers"
   add_foreign_key "annual_teachers", "years"
+  add_foreign_key "lessons", "subjects"
+  add_foreign_key "lessons", "teachers"
+  add_foreign_key "lessons", "year_terms"
   add_foreign_key "responsibilities", "sections"
   add_foreign_key "subjects", "subject_areas"
   add_foreign_key "teachers", "subject_areas"
