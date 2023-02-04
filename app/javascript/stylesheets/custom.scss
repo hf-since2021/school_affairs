@@ -278,3 +278,19 @@ main {
  .design09 tr {
   border-top: dashed .5px #778ca3;
  }
+
+//  ウィークリーで使用
+ .h-130 {
+  height: 130px;
+ }
+
+ .weekly-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+ }
+
+ .weekly-headline {
+  grid-column-start: 1;
+  grid-column-end: 8;
+ }
+ 

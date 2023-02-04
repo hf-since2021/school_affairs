@@ -3,6 +3,7 @@ class InformationsController < ApplicationController
   before_action :set_logined_term
 
   def index
+    @today = Date.today
   end
 
   private

@@ -9,7 +9,7 @@
   <%# <div style="display:table-cell;width:30vw;"> %>
   <div class="col-lg-3">
     <div class="p-3">
-      【カレンダー】
+      <%= "【#{Date.today.month}月のカレンダー】" %>
       <table class="design09 my-2">
         <thead>
           <tr>
@@ -23,60 +23,18 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>7</td>
-            <td>8</td>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-          </tr>
-          <tr>
-            <td>13</td>
-            <td>14</td>
-            <td>15</td>
-            <td>16</td>
-            <td>17</td>
-            <td>18</td>
-            <td>19</td>
-          </tr>
-          <tr>
-            <td>20</td>
-            <td>21</td>
-            <td>22</td>
-            <td>23</td>
-            <td>24</td>
-            <td>25</td>
-            <td>26</td>
-          </tr>
-          <tr>
-            <td>27</td>
-            <td>28</td>
-            <td>29</td>
-            <td>30</td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+          <%
+            begining_monthly = Date.new(Date.today.year,Date.today.month,1)
+            current_mday = begining_monthly.prev_day((begining_monthly.wday+6)%7)
+            [*0..5].each do |week|
+          %>
+            <tr>
+              <% [*0..6].each do |day| %>
+                <td><%= current_mday.day if current_mday.month == Date.today.month %></td>
+                <% current_mday = current_mday.next %>
+              <% end %>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
@@ -84,67 +42,24 @@
 
   <%# <div style="display:table-cell;width:70vw;"> %>
   <div class="col-lg-9">
-    <div class="row p-3"> 
-      <div class="col-md-12 p-1">
-        【行事予定】
+    <div class="weekly-grid p-3"> 
+      <div class="weekly-headline p-1">
+        <%="【今週と来週の行事予定】"%>
       </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">5月30日(月)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">5月31日(火)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">6月1日(水)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">6月2日(木)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">6月3日(金)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-1 p-1">
-        <div class="calendar-cel border">6月4日(土)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-1 p-1">
-        <div class="calendar-cel border">6月5日(日)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
+      <%
+        day_of_week = ["日", "月", "火", "水", "木", "金", "土"]
+        current_wday = Date.today.prev_day((Date.today.wday+6)%7)
+        [*0..13].each do |day|
+      %>
+        <div class="p-1">
+          <div class="calendar-cel border">
+            <%= "#{current_wday.month}月#{current_wday.day}日(#{day_of_week[current_wday.wday]})" %>
+            <% current_wday = current_wday.next %>
+          </div>
+          <div class="calendar-cel border mt-1 h-130"></div>
+        </div>
+      <% end %>
 
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">6月6日(月)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">6月7日(火)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">6月8日(水)</div>
-        <div class="calendar-cel border mt-1">・スキルチェック締切<br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">6月9日(木)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-2 p-1">
-        <div class="calendar-cel border">6月10日(金)</div>
-        <div class="calendar-cel border mt-1">・説明文提出締切<br>・要件定義提出締切<br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-1 p-1">
-        <div class="calendar-cel border">6月11日(土)</div>
-        <div class="calendar-cel border mt-1">・学習成果<br>　発表会<br><br><br><br><br><br></div>
-      </div>
-      <div class="col-md-1 p-1">
-        <div class="calendar-cel border">6月12日(日)</div>
-        <div class="calendar-cel border mt-1"><br><br><br><br><br><br><br></div>
-      </div>
     </div>
   </div>
 
@@ -154,14 +69,14 @@
   <ul class="news-list">
     <li class="item">
         <a href="#">
-            <p class="date">2022/5/20</p>
+            <p class="date"><%= "#{Date.today.month}月#{Date.today.day}日(#{day_of_week[Date.today.wday]})" %></p>
             <p class="category"><span>お知らせ</span></p>
             <p class="title">ここにお知らせが入りますここにお知らせが入りますここにお知らせが入ります</p>
         </a>
     </li>
     <li class="item">
         <a href="#">
-            <p class="date">2022/5/21</p>
+            <p class="date"><%= "#{Date.today.prev_day(1).month}月#{Date.today.prev_day(1).day}日(#{day_of_week[Date.today.prev_day(1).wday]})" %></p>
             <p class="category"><span>お知らせ</span></p>
             <p class="title">ここにお知らせが入りますここにお知らせが入りますここにお知らせが入ります</p>
         </a>
