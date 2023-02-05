@@ -58,3 +58,7 @@ gem 'pry-rails'
 gem 'devise'
 gem 'cancancan'
 gem 'rolify'
+
+group :production do
+  gem 'unicorn', '5.4.1'
+end
