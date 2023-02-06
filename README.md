@@ -7,7 +7,7 @@
 - 欠席連絡システムと連携して出欠席確認を効率化する。
 
 # URL
-https://school-affairs-808.herokuapp.com/
+http://52.192.30.156:3000/
 
 # テスト用アカウント
 ### Basic認証
